@@ -5,7 +5,8 @@ export function damageFormula(character: Character, character2: Character) {
     //Урон персонажа: Обычный урон * Скорость атаки
     const damageCharacter = character.damage.getValue() * character.speed.getValue();
     //Урон по персонажу: Урон персонажа / сопративлении брони
-    const datageInCharacter = damageCharacter / (character2.arror.getValue() / 100);
+    const datageInCharacter = damageCharacter - (damageCharacter * character2.arror.getValue() / 100);
+
     return datageInCharacter;
 }
 
@@ -13,10 +14,12 @@ export function damageFormula(character: Character, character2: Character) {
 export function damageCharacter(character: Character, damage: number) {
     // пока есть барьер урон по здоровью не будет, весь сверхУрон полностью поглащается барьером.
     const barrierValue = character.barrier.getValue();
+
     if (barrierValue != 0) {
         character.barrier.setValue(barrierValue - damage);
         return;
     }
+
     const healthValue = character.health.getValue();
     character.health.setValue(healthValue - damage);
 }
