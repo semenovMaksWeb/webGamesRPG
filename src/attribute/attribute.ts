@@ -12,12 +12,12 @@ export class Attribute {
 
     // Сохранить значение атрибута
     setValue(value: number) {
-        if (this.minValue && this.minValue > value) {
+        if (this.minValue !== null && this.minValue > value) {
             this.value = this.minValue;
             return;
         }
 
-        if (this.maxValue && this.maxValue < value) {
+        if (this.maxValue !== null && this.maxValue < value) {
             this.value = this.maxValue;
             return;
         }
