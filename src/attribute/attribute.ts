@@ -1,0 +1,32 @@
+// Общий класс атрибутов
+export class Attribute {
+    private value: number = 0; // Значения атрибута числовое значение
+    public readonly minValue: number | null; // Минимальное значение атрибута
+    public readonly maxValue: number | null; // Максимально значение атрибута
+
+    constructor(value: number, minValue: number | null, maxValue: number | null) {
+        this.minValue = minValue;
+        this.maxValue = maxValue;
+        this.setValue(value);
+    }
+
+    // Сохранить значение атрибута
+    setValue(value: number) {
+        if (this.minValue && this.minValue > value) {
+            this.value = this.minValue;
+            return;
+        }
+
+        if (this.maxValue && this.maxValue < value) {
+            this.value = this.maxValue;
+            return;
+        }
+
+        this.value = value;
+    }
+
+    // Получить значение атрибута
+    getValue() {
+        return this.value;
+    }
+}
