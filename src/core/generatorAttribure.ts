@@ -6,7 +6,9 @@ export function generatorAttribure(configAttribure: any) {
 
     for (const attribureKey in configAttribure) {
         const attribureItem = configAttribure[attribureKey];
-        character[attribureKey] = new listAttribute[attribureKey](attribureItem);
+        if (listAttribute[attribureKey]) {
+            character[attribureKey] = new listAttribute[attribureKey](attribureItem);
+        }
     }
 
     return character;
