@@ -5,7 +5,7 @@ export function damageFormula(character: Character, character2: Character) {
     //Урон персонажа: Обычный урон * Скорость атаки
     const damageCharacter = character.damage.getValue() * character.speed.getValue();
     //Урон по персонажу: Урон персонажа / сопративлении брони
-    const datageInCharacter = damageCharacter - (damageCharacter * character2.arror.getValue() / 100);
+    const datageInCharacter = damageCharacter - (damageCharacter * character2.armor.getValue() / 100);
 
     return datageInCharacter;
 }
