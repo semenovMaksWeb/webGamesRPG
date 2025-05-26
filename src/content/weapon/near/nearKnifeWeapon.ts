@@ -10,7 +10,7 @@ export class nearKnifeWeapon extends Weapon {
         };
 
         super(
-            "Топор",
+            "Нож",
             WEAPON_LIST_TYPE.NEAR,
             configWeapon.damage,
             configWeapon.speed
