@@ -1,4 +1,4 @@
-import { Attribute } from "./attribute";
+import { Attribute } from "@src/core/attribute/attribute";
 
 // Атрибут скорость атаки
 export class SpeedDamageAttribute extends Attribute {

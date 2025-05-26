@@ -1,5 +1,5 @@
-import { Character } from "@src/character/character";
-import { damageCharacter, damageFormula } from "./damageFormula";
+import { Character } from "@src/core/character/character";
+import { damageCharacter, damageFormula } from "@src/core/games/damageFormula";
 
 export function games(character: Character, character2: Character) {
     let xod = 0;
