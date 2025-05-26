@@ -1,0 +1,16 @@
+{
+    "user": {
+        "name": "Admin"
+    },
+    "loot": {
+        "character": [
+            {
+                "name": "fellerСharacter",
+                "level": 1
+            }
+        ],
+        "weapon": [
+            {}
+        ]
+    }
+}

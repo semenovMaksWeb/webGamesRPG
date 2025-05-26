@@ -1,4 +1,4 @@
-import { Character } from "@src/character/character";
+import { Character } from "@src/core/character/character";
 
 // Формула рассчета урона
 export function damageFormula(character: Character, character2: Character) {

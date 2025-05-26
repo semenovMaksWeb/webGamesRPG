@@ -1,8 +1,8 @@
-import { DamageAttribute } from "@src/attribute/damageAttribute";
+import { DamageAttribute } from "@src/core/attribute/damageAttribute";
 import { ArmorAttribute } from "../attribute/armorAttribute";
 import { BarrierAttribute } from "../attribute/barrierAttribute";
 import { HealthAttribute } from "../attribute/healthAttribute";
-import { SpeedDamageAttribute } from "@src/attribute/speedDamageAttribute";
+import { SpeedDamageAttribute } from "@src/core/attribute/speedDamageAttribute";
 
 export class Character {
     public health: HealthAttribute;

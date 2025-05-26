@@ -1,4 +1,4 @@
-import { Character } from "./character";
+import { Character } from "@src/core/character/character";
 
 export class FellerСharacter extends Character {
     constructor() {
@@ -18,4 +18,4 @@ export class FellerСharacter extends Character {
             characterConfig.speed
         );
     }
-}   
+}
