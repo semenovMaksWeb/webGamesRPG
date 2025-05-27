@@ -5,3 +5,17 @@ export enum ListAttribute {
     speed = "speed",
     damage = "damage",
 }
+
+
+export enum ListAttributeCharacter {
+    armor = ListAttribute.armor,
+    health = ListAttribute.health,
+    barrier = ListAttribute.barrier,
+    speed = ListAttribute.speed,
+    damage = ListAttribute.damage
+}
+
+export enum ListAttributeWeapon {
+    speed = ListAttribute.speed,
+    damage = ListAttribute.damage,
+}
