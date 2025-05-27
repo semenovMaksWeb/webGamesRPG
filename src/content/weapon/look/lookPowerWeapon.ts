@@ -1,7 +1,7 @@
 import { Weapon } from "@src/core/weapon/weapon";
 import { WEAPON_LIST_TYPE } from "@src/core/weapon/weaponListType";
 
-export class lookPowerWeapon extends Weapon {
+export class LookPowerWeapon extends Weapon {
     constructor() {
         const configWeapon = {
             speed: 1,
