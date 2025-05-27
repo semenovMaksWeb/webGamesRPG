@@ -1,6 +1,7 @@
-import { ListAttributeCharacter, ListAttributeWeapon } from "@src/core/attribute/ListAttribute";
+import { ListAttributeCharacter, ListAttributeGain, ListAttributeWeapon } from "@src/core/attribute/ListAttribute";
 import { Character } from "@src/core/character/character";
 import { Weapon } from "../weapon/weapon";
+import { Gain } from "../gain/gain";
 
 export interface ExampleBonus {
     name: string;
@@ -10,8 +11,10 @@ export interface ExampleBonus {
 // Бонусы к персонажам
 export function ExampleBonusCharacterCall(
     character: Character,
-    bonusList: ExampleBonus[]
+    bonusList: ExampleBonus[],
+    gainList: Gain[]
 ) {
+    // Бонус от прокачки
     for (const bonusItem of bonusList) {
         switch (bonusItem.name) {
             case ListAttributeCharacter.armor:
@@ -35,13 +38,30 @@ export function ExampleBonusCharacterCall(
                 break;
         }
     }
+
+    // Бонус от усилении
+    for (const gainItem of gainList) {
+        for (const gainBonusItem of gainItem.exampleBonusList) {
+            switch (gainBonusItem.name) {
+                case ListAttributeGain.armor:
+                    character.armor.setValue(character.armor.getValue() + gainBonusItem.value);
+                    break;
+
+                case ListAttributeGain.health:
+                    character.health.setValue(character.health.getValue() + gainBonusItem.value);
+                    break;
+            }
+        }
+    }
 }
 
 // Бонусы к оружию
 export function ExampleBonusWeaponCall(
     weapon: Weapon,
-    bonusList: ExampleBonus[]
+    bonusList: ExampleBonus[],
+    gainList: Gain[]
 ) {
+        // Бонус от прокачки
     for (const bonusItem of bonusList) {
         switch (bonusItem.name) {
             case ListAttributeWeapon.damage:
@@ -51,6 +71,17 @@ export function ExampleBonusWeaponCall(
             case ListAttributeWeapon.speed:
                 weapon.damage.setValue(weapon.damage.getValue() + bonusItem.value);
                 break;
+        }
+    }
+
+    // Бонус от усилении
+    for (const gainItem of gainList) {
+        for (const gainBonusItem of gainItem.exampleBonusList) {
+            switch (gainBonusItem.name) {
+                case ListAttributeGain.damage:
+                    weapon.damage.setValue(weapon.damage.getValue() + gainBonusItem.value);
+                    break;
+            }
         }
     }
 }

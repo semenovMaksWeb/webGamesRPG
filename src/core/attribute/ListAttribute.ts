@@ -19,3 +19,9 @@ export enum ListAttributeWeapon {
     speed = ListAttribute.speed,
     damage = ListAttribute.damage,
 }
+
+export enum ListAttributeGain {
+    health = ListAttribute.health,
+    armor = ListAttribute.armor,
+    damage = ListAttribute.damage,
+}
