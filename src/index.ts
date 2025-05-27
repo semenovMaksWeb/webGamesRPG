@@ -7,6 +7,10 @@ import { Player } from "./core/player/player";
 import { CharacterExample } from "./core/example/character/characterExample";
 import { ExampleBonus } from "./core/libs/exampleBonus";
 import { WeaponExample } from "./core/example/character/weaponExample";
+import { Gain } from "./core/gain/gain";
+import { HealthGain } from "./content/gain/character/healthGain";
+import { DamageWeaponGain } from "./content/gain/weapon/damageWeaponGain";
+import { ArmorGain } from "./content/gain/character/armorGain";
 
 const character1 = new FellerСharacter();
 const character2 = new FellerСharacter();
@@ -32,11 +36,21 @@ const bonusListWeapon: ExampleBonus[] = [
     }
 ]
 
-const characterExample1 = new CharacterExample(character1, 5, bonusList);
-const characterExample2 = new CharacterExample(character1, 1, []);
+const gainWeapon2: Gain[] = [
+    new DamageWeaponGain()
+]
 
-const weaponExample1 = new WeaponExample(weapon1, 5, []);
-const weaponExample2 = new WeaponExample(weapon2, 1, bonusListWeapon);
+const gainCharacter2: Gain[] = [
+    new HealthGain(),
+    new ArmorGain()
+]
+
+
+const characterExample1 = new CharacterExample(character1, 5, bonusList, []);
+const characterExample2 = new CharacterExample(character1, 1, [], gainCharacter2);
+
+const weaponExample1 = new WeaponExample(weapon1, 5, [], []);
+const weaponExample2 = new WeaponExample(weapon2, 1, bonusListWeapon, gainWeapon2);
 
 const player1 = new Player(character1, weapon1, characterExample1, weaponExample1);
 const player2 = new Player(character2, weapon2, characterExample2, weaponExample2);
