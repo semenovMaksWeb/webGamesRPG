@@ -9,22 +9,28 @@ export interface AccountConfig {
 
     weapon: AccountConfigWeapon[],
 
-    gain: {
-        name: string;
-        count: number;
-    }[]
+    gain: AccountConfiGain[]
+}
+
+export interface AccountConfiGain {
+    name: string;
+    level: number;
+    experience: number;
 }
 
 export interface AccountConfigCharacter {
-    level: number;
     name: string;
+    level: number;
+    experience: number;
     bonus: ExampleBonus[];
-    gain: string[];
+    gain: AccountConfiGain[];
+
 }
 
 export interface AccountConfigWeapon {
-    level: number;
     name: string;
+    level: number;
+    experience: number;
     bonus: ExampleBonus[];
-    gain: string[];
+    gain: AccountConfiGain[];
 }

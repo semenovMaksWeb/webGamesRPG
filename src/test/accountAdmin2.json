@@ -4,17 +4,27 @@
     },
     "character": [
         {
+            "experience": 1950,
             "level": 1,
             "name": "FellerСharacter",
             "bonus": [],
             "gain": [
-                "HealthGain",
-                "ArmorGain"
+                {
+                    "name": "HealthGain",
+                    "level": 1,
+                    "experience": 1500
+                },
+                {
+                    "name": "ArmorGain",
+                    "level": 1,
+                    "experience": 1500
+                }
             ]
         }
     ],
     "weapon": [
         {
+            "experience": 2250,
             "level": 2,
             "name": "LookVampireWeapon",
             "bonus": [
@@ -24,7 +34,11 @@
                 }
             ],
             "gain": [
-                "DamageWeaponGain"
+                {
+                    "name": "DamageWeaponGain",
+                    "level": 1,
+                    "experience": 1500
+                }
             ]
         }
     ],

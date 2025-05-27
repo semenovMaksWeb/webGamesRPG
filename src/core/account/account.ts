@@ -1,6 +1,6 @@
 import { characterList } from "@src/core/character/characterList";
 import { Player } from "@src/core/player/player";
-import { AccountConfig, AccountConfigCharacter, AccountConfigWeapon } from "@src/core/account/AccountConfig";
+import { AccountConfig, AccountConfiGain, AccountConfigCharacter, AccountConfigWeapon } from "@src/core/account/AccountConfig";
 import { FellerСharacter } from "@src/content/character/fellerСharacter"
 import { CharacterExample } from "@src/core/example/character/characterExample";
 import { weaponList } from "@src/core/weapon/weaponList";
@@ -25,8 +25,6 @@ export class Account {
     }
 
     private generatorCharacter(activeConfigCharacter: AccountConfigCharacter) {
-        console.log("activeConfigCharacter.name", activeConfigCharacter.name);
-
         switch (activeConfigCharacter.name) {
             case characterList.FellerСharacter:
                 return new FellerСharacter();
@@ -34,8 +32,6 @@ export class Account {
     }
 
     private generatorWeapon(activeConfigWeapon: AccountConfigWeapon) {
-        console.log("activeConfigWeapon.name", activeConfigWeapon.name);
-
         switch (activeConfigWeapon.name) {
             case weaponList.LookNoviceWeapon:
                 return new LookNoviceWeapon();
@@ -46,7 +42,6 @@ export class Account {
             case weaponList.LookVampireWeapon:
                 return new LookVampireWeapon();
 
-
             case weaponList.NearAxWeapon:
                 return new NearAxWeapon();
 
@@ -55,21 +50,20 @@ export class Account {
         }
     }
 
-    private generatorGain(gain: string[]) {
+    private generatorGain(gain: AccountConfiGain[]) {
         const gainClass: GainExample[] = [];
-        const level = 1;
         for (const gainItem of gain) {
-            switch (gainItem) {
+            switch (gainItem.name) {
                 case gainList.armorGain:
-                    gainClass.push({ gain: new ArmorGain(), level: level })
+                    gainClass.push(new GainExample(new ArmorGain(), gainItem.level, gainItem.experience));
                     break;
 
                 case gainList.damageWeaponGain:
-                    gainClass.push({ gain: new DamageWeaponGain(), level: level })
+                    gainClass.push(new GainExample(new DamageWeaponGain(), gainItem.level, gainItem.experience));
                     break;
 
                 case gainList.healthGain:
-                    gainClass.push({ gain: new HealthGain(), level: level })
+                    gainClass.push(new GainExample(new HealthGain(), gainItem.level, gainItem.experience));
                     break;
             }
         }
@@ -85,8 +79,6 @@ export class Account {
         const weapon = this.generatorWeapon(this.config.weapon[indexWeapon]);
         const gainCharacter = this.generatorGain(this.config.character[indexCharacter].gain);
         const gainWeapon = this.generatorGain(this.config.weapon[indexWeapon].gain);
-        console.log("character", character);
-        console.log("weapon", weapon);
 
         if (!character || !weapon) {
             throw new Error();
@@ -96,15 +88,17 @@ export class Account {
             character,
             this.config.character[indexCharacter].level,
             this.config.character[indexCharacter].bonus,
-            gainCharacter
+            gainCharacter,
+            this.config.character[indexCharacter].experience,
         );
+
         const weaponExample = new WeaponExample(
             weapon,
             this.config.weapon[indexWeapon].level,
             this.config.weapon[indexWeapon].bonus,
-            gainWeapon
+            gainWeapon,
+            this.config.weapon[indexWeapon].experience,
         )
         return new Player(character, weapon, characterExample, weaponExample);
-
     }
 }
