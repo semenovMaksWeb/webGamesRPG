@@ -5,7 +5,7 @@ import { gamesPlayer } from "./core/games/games";
 import { FellerСharacter } from "@src/content/character/fellerСharacter"
 import { Player } from "./core/player/player";
 import { CharacterExample } from "./core/example/character/characterExample";
-import { ExampleBonus } from "./core/example/character/characterExampleBonus";
+import { ExampleBonus } from "./core/libs/exampleBonus";
 
 const character1 = new FellerСharacter();
 const character2 = new FellerСharacter();

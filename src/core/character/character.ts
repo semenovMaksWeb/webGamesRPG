@@ -21,7 +21,6 @@ export class Character {
         speed: number
     ) {
         this.name = name;
-
         this.health = new HealthAttribute(health);
         this.armor = new ArmorAttribute(armor);
         this.barrier = new BarrierAttribute(barrier);

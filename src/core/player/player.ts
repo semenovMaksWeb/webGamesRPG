@@ -9,7 +9,7 @@ export class Player {
     public readonly character: Character;
     public readonly weapon: Weapon;
 
-    public characterPlayer: CharacterExample;
+    public characterPlayer: Character;
     public weaponPlayer: Weapon;
 
     constructor(character: Character, weapon: Weapon, characterExample: CharacterExample) {

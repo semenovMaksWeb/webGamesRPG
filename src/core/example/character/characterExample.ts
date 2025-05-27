@@ -1,5 +1,5 @@
 import { Character } from "@src/core/character/character"
-import { ExampleBonus, ExampleBonusCall } from "./characterExampleBonus";
+import { ExampleBonus, ExampleBonusCall } from "@src/core/libs/exampleBonus";
 import { cloneClass } from "@src/core/libs/cloneClass";
 
 // Экземлпяр персонажа с своей прокачкой и вставленными модами
