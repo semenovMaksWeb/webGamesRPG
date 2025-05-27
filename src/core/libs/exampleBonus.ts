@@ -1,7 +1,7 @@
 import { ListAttributeCharacter, ListAttributeGain, ListAttributeWeapon } from "@src/core/attribute/ListAttribute";
 import { Character } from "@src/core/character/character";
 import { Weapon } from "../weapon/weapon";
-import { Gain } from "../gain/gain";
+import { GainExample } from "../example/character/gainExample";
 
 export interface ExampleBonus {
     name: string;
@@ -12,7 +12,7 @@ export interface ExampleBonus {
 export function ExampleBonusCharacterCall(
     character: Character,
     bonusList: ExampleBonus[],
-    gainList: Gain[]
+    gainExampleList: GainExample[]
 ) {
     // Бонус от прокачки
     for (const bonusItem of bonusList) {
@@ -40,8 +40,8 @@ export function ExampleBonusCharacterCall(
     }
 
     // Бонус от усилении
-    for (const gainItem of gainList) {
-        for (const gainBonusItem of gainItem.exampleBonusList) {
+    for (const gainItem of gainExampleList) {
+        for (const gainBonusItem of gainItem.gain.exampleBonusList) {
             switch (gainBonusItem.name) {
                 case ListAttributeGain.armor:
                     character.armor.setValue(character.armor.getValue() + gainBonusItem.value);
@@ -59,9 +59,9 @@ export function ExampleBonusCharacterCall(
 export function ExampleBonusWeaponCall(
     weapon: Weapon,
     bonusList: ExampleBonus[],
-    gainList: Gain[]
+    gainExampleList: GainExample[]
 ) {
-        // Бонус от прокачки
+    // Бонус от прокачки
     for (const bonusItem of bonusList) {
         switch (bonusItem.name) {
             case ListAttributeWeapon.damage:
@@ -75,8 +75,8 @@ export function ExampleBonusWeaponCall(
     }
 
     // Бонус от усилении
-    for (const gainItem of gainList) {
-        for (const gainBonusItem of gainItem.exampleBonusList) {
+    for (const gainItem of gainExampleList) {
+        for (const gainBonusItem of gainItem.gain.exampleBonusList) {
             switch (gainBonusItem.name) {
                 case ListAttributeGain.damage:
                     weapon.damage.setValue(weapon.damage.getValue() + gainBonusItem.value);

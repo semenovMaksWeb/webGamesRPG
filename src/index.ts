@@ -11,6 +11,7 @@ import { Gain } from "./core/gain/gain";
 import { HealthGain } from "./content/gain/character/healthGain";
 import { DamageWeaponGain } from "./content/gain/weapon/damageWeaponGain";
 import { ArmorGain } from "./content/gain/character/armorGain";
+import { GainExample } from "./core/example/character/gainExample";
 
 const character1 = new FellerСharacter();
 const character2 = new FellerСharacter();
@@ -36,13 +37,13 @@ const bonusListWeapon: ExampleBonus[] = [
     }
 ]
 
-const gainWeapon2: Gain[] = [
-    new DamageWeaponGain()
+const gainWeapon2: GainExample[] = [
+    new GainExample(new DamageWeaponGain(), 1)
 ]
 
-const gainCharacter2: Gain[] = [
-    new HealthGain(),
-    new ArmorGain()
+const gainCharacter2: GainExample[] = [
+    new GainExample(new HealthGain(), 1),
+    new GainExample(new ArmorGain(), 1)
 ]
 
 

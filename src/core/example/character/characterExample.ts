@@ -1,18 +1,18 @@
 import { Character } from "@src/core/character/character"
 import { ExampleBonus, ExampleBonusCharacterCall } from "@src/core/libs/exampleBonus";
 import { cloneClass } from "@src/core/libs/cloneClass";
-import { Gain } from "@src/core/gain/gain";
+import { GainExample } from "./gainExample";
 
 // Экземлпяр персонажа с своей прокачкой и вставленными модами
 export class CharacterExample {
     public character: Character;
     public level: number; // Уровень персонажа
-    public gainList: Gain[]; // Список усилении
+    public gainExampleList: GainExample[]; // Список усилении
 
-    constructor(character: Character, level: number, bonusList: ExampleBonus[], gainList: Gain[]) {
+    constructor(character: Character, level: number, bonusList: ExampleBonus[], gainExampleList: GainExample[]) {
         this.character = cloneClass(character);
         this.level = level;
-        this.gainList = gainList;
-        ExampleBonusCharacterCall(this.character, bonusList, gainList);
+        this.gainExampleList = gainExampleList;
+        ExampleBonusCharacterCall(this.character, bonusList, gainExampleList);
     }
 }
