@@ -1,0 +1,31 @@
+{
+    "user": {
+        "name": "Admin"
+    },
+    "character": [
+        {
+            "level": 3,
+            "name": "FellerСharacter",
+            "bonus": [
+                {
+                    "name": "armor",
+                    "value": 5
+                },
+                {
+                    "name": "damage",
+                    "value": 5
+                }
+            ],
+            "gain": []
+        }
+    ],
+    "weapon": [
+        {
+            "level": 1,
+            "name": "LookPowerWeapon",
+            "bonus": [],
+            "gain": []
+        }
+    ],
+    "gain": []
+}

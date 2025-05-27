@@ -1,0 +1,32 @@
+{
+    "user": {
+        "name": "Admin2"
+    },
+    "character": [
+        {
+            "level": 1,
+            "name": "FellerСharacter",
+            "bonus": [],
+            "gain": [
+                "HealthGain",
+                "ArmorGain"
+            ]
+        }
+    ],
+    "weapon": [
+        {
+            "level": 2,
+            "name": "LookVampireWeapon",
+            "bonus": [
+                {
+                    "name": "damage",
+                    "value": 15
+                }
+            ],
+            "gain": [
+                "DamageWeaponGain"
+            ]
+        }
+    ],
+    "gain": []
+}
