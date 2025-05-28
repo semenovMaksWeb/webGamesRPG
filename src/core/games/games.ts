@@ -1,5 +1,5 @@
 import { Character } from "@src/core/character/character";
-import { damageCharacter, damageFormula, damageFormulaPlayer, damagePlayer } from "@src/core/games/damageFormula";
+import { damageFormulaPlayer, damagePlayer } from "@src/core/games/damageFormula";
 import { Player } from "../player/player";
 
 
