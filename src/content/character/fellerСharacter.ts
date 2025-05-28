@@ -8,6 +8,8 @@ export class FellerСharacter extends Character {
             barrier: 0,
             damage: 20,
             speed: 1,
+            nearAddDamage: 20,
+
         }
         super(
             "Лесоруб",
@@ -15,7 +17,8 @@ export class FellerСharacter extends Character {
             characterConfig.armor,
             characterConfig.barrier,
             characterConfig.damage,
-            characterConfig.speed
+            characterConfig.speed,
+            characterConfig.nearAddDamage
         );
     }
 }
