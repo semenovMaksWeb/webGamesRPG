@@ -6,13 +6,17 @@ export class NearAxWeapon extends Weapon {
         const configWeapon = {
             speed: 0.5,
             damage: 14,
+            critDamage: 40,
+            chanceCritDamage: 10,
         };
 
         super(
             "Топор",
             WEAPON_LIST_TYPE.NEAR,
             configWeapon.damage,
-            configWeapon.speed
+            configWeapon.speed,
+            configWeapon.critDamage,
+            configWeapon.chanceCritDamage
         )
     }
 }
