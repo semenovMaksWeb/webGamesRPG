@@ -26,7 +26,7 @@
         {
             "experience": 2250,
             "level": 2,
-            "name": "LookVampireWeapon",
+            "name": "NearAxWeapon",
             "bonus": [
                 {
                     "name": "damage",
