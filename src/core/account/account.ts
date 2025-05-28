@@ -20,7 +20,7 @@ import { LookVampireWeapon } from "@src/content/weapon/look/lookVampireWeapon";
 export class Account {
     public config: AccountConfig;
 
-    constructor(config: any) {
+    constructor(config: AccountConfig) {
         this.config = config;
     }
 
