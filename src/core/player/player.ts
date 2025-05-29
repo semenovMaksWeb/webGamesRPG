@@ -1,17 +1,18 @@
 // Игрок сущность игрока у которого происходит бой
 
-import { Character } from "../character/character";
-import { CharacterExample } from "../example/character/characterExample";
-import { WeaponExample } from "../example/character/weaponExample";
-import { cloneClass } from "../libs/cloneClass";
-import { Weapon } from "../weapon/weapon";
+import { Character } from "@src/core/character/character";
+import { Effect } from "@src/core/effect/effect";
+import { CharacterExample } from "@src/core/example/character/characterExample";
+import { WeaponExample } from "@src/core/example/character/weaponExample";
+import { cloneClass } from "@src/core/libs/cloneClass";
+import { Weapon } from "@src/core/weapon/weapon";
 
 export class Player {
     public readonly name: string;
 
     public readonly character: Character;
     public readonly weapon: Weapon;
-
+    public effectList: Effect[] = [];
     public characterPlayer: Character;
     public weaponPlayer: Weapon;
 

@@ -1,8 +1,10 @@
-import { ListAttributeDamage } from "../attribute/ListAttribute";
-import { getRandomInt } from "../libs/getRandomInt";
-import { Player } from "../player/player";
-import { WEAPON_LIST_TYPE } from "../weapon/weaponListType";
-import { ActionGamesList, ActionGamesListText } from "./actionGamesList";
+import { ListAttributeDamage } from "@src/core/attribute/ListAttribute";
+import { Effect } from "@src/core/effect/effect";
+import { effectList } from "@src/core/effect/effectList";
+import { getRandomInt } from "@src/core/libs/getRandomInt";
+import { Player } from "@src/core/player/player";
+import { WEAPON_LIST_TYPE } from "@src/core/weapon/weaponListType";
+import { ActionGamesList, ActionGamesListText } from "@src/core/games/actionGamesList";
 
 // Класс игры
 export class Games {
@@ -18,7 +20,7 @@ export class Games {
 
     // Проверка конца игры если у всех игроков 0хп.
     checkGamesEnd() {
-        return !this.playerList.find((playerItem) => playerItem.characterPlayer.health.getValue() !== 0);
+        return !!this.playerList.find((playerItem) => playerItem.characterPlayer.health.getValue() == 0);
     }
 
     // Добавить запись в историю
@@ -84,9 +86,15 @@ export class Games {
             case ListAttributeDamage.hemorrhage:
                 const addDamageXp = 50; // Добавляет урон к хп
                 const remoreDamageBarrier = 50; // уменьшает урон к барьеру
+
+                const countEffectHemorrhage = getRandomInt(1, 3);
+                this.addEffect(playerDeff, effectList.hemorrhage, countEffectHemorrhage);
+                this.addHistory(playerDeff.name, ActionGamesList.effectHemorrhage, countEffectHemorrhage);
+
                 if (playerDeff.characterPlayer.barrier.getValue() !== 0) {
-                    return (damageWeaponBase * typeDamage.value / 100) - (damageWeaponBase * remoreDamageBarrier / 100)
+                    return (damageWeaponBase * typeDamage.value / 100) - (damageWeaponBase * remoreDamageBarrier / 100);
                 }
+
                 return damageWeaponBase * typeDamage.value / 100 + (damageWeaponBase * addDamageXp / 100)
         }
 
@@ -137,11 +145,43 @@ export class Games {
         //Урон по игроку: Урон - сопративлении брони
         const damageArmor = damageAll - (damageAll * player2.characterPlayer.armor.getValue() / 100);
         //Урон по игроку: Урон - сопративлении резистов
-        const damageRisist = this.damageRisist(damageArmor, player2, typeDamage).toFixed(3);
+        const damageRisist = +this.damageRisist(damageArmor, player2, typeDamage).toFixed(3);
 
         // Добавление истории игры
         this.addHistory(player1.name, ActionGamesList.causeDamage, damageRisist);
         this.addHistoryTypeDamage(player1.name, isCrit, typeDamage.name);
         return damageRisist;
+    }
+
+    // Каждый ход опустить количество эффектов на 1
+    public effectRemoveXod(player: Player) {
+        if (!player.effectList.length) {
+            return;
+        }
+        for (const [effectIndex, effectItem] of player.effectList.entries()) {
+
+            switch (effectItem.name) {
+                case effectList.hemorrhage:
+                    // кровотечение наносит урон сразу по здоровью
+                    this.addHistory(player.name, ActionGamesList.getDamageXp, effectItem.getCount());
+                    player.characterPlayer.health.setValue(player.characterPlayer.health.getValue() - effectItem.getCount());
+                    break;
+            }
+
+            effectItem.removeCount();
+            if (effectItem.getCount() == 0) {
+                player.effectList.splice(effectIndex, 1);
+            }
+        }
+    }
+
+    // Добавить эффект на персонажа
+    public addEffect(player: Player, name: string, count: number) {
+        const effectCheck = player.effectList.find((effect: Effect) => effect.name == name);
+        if (effectCheck) {
+            effectCheck.addCount(count);
+            return;
+        }
+        player.effectList.push(new Effect(name, count));
     }
 }

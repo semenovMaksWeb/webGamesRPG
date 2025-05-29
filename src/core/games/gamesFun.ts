@@ -1,4 +1,3 @@
-import { damageFormulaPlayer, damagePlayer } from "@src/core/games/damageFormula";
 import { Player } from "../player/player";
 import { Games } from "./games";
 
@@ -7,16 +6,26 @@ import { Games } from "./games";
 export function gamesPlayer(player1: Player, player2: Player) {
     const games = new Games([player1, player2]);
     while (true) {
+
+        if (games.characterXod == 1) {
+            games.effectRemoveXod(player1);
+        }
+
+        if (games.characterXod == 2) {
+            games.effectRemoveXod(player2);
+        }
+
         if (games.checkGamesEnd()) {
+            console.log("player1.characterPlayer.health.getValue", player1.characterPlayer.health.getValue());
+            console.log("player2.characterPlayer.health.getValue", player2.characterPlayer.health.getValue());
             break;
         }
 
         if (games.characterXod == 1) {
             xodPlayer(player1, player2);
             games.characterXod = 2;
-        }
 
-        if (games.characterXod == 2) {
+        } else if (games.characterXod == 2) {
             xodPlayer(player2, player1);
             games.characterXod = 1;
         }
