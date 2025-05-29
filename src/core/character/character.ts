@@ -1,9 +1,9 @@
-import { DamageAttribute } from "@src/core/attribute/damageAttribute";
-import { ArmorAttribute } from "@src/core/attribute/armorAttribute";
-import { BarrierAttribute } from "@src/core/attribute/barrierAttribute";
-import { HealthAttribute } from "@src/core/attribute/healthAttribute";
-import { SpeedDamageAttribute } from "@src/core/attribute/speedDamageAttribute";
-import { NearAddDamageAttribute } from "../attribute/nearAddDamageAttribute";
+import { DamageAttribute } from "@src/core/attribute/damage/damageAttribute";
+import { ArmorAttribute } from "@src/core/attribute/defensive/armorAttribute";
+import { BarrierAttribute } from "@src/core/attribute/defensive/barrierAttribute";
+import { HealthAttribute } from "@src/core/attribute/defensive/healthAttribute";
+import { SpeedDamageAttribute } from "@src/core/attribute/damage/speedDamageAttribute";
+import { NearAddDamageAttribute } from "@src/core/attribute/damage/nearAddDamageAttribute";
 
 export class Character {
     public health: HealthAttribute;

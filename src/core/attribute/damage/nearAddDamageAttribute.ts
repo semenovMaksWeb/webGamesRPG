@@ -1,4 +1,4 @@
-import { Attribute } from "./attribute";
+import { Attribute } from "@src/core/attribute/attribute";
 
 // Атрибут повышенные % урона для ближнего оружия
 export class NearAddDamageAttribute extends Attribute {

@@ -1,8 +1,8 @@
-import { DamageAttribute } from "@src/core/attribute/damageAttribute";
+import { DamageAttribute } from "@src/core/attribute/damage/damageAttribute";
 import { WEAPON_LIST_TYPE } from "./weaponListType";
-import { SpeedDamageAttribute } from "@src/core/attribute/speedDamageAttribute";
-import { CritDamageAttribute } from "../attribute/critDamageAttribute";
-import { chanceCritDamageAttribute } from "../attribute/chanceCritDamageAttribute";
+import { SpeedDamageAttribute } from "@src/core/attribute/damage/speedDamageAttribute";
+import { CritDamageAttribute } from "@src/core/attribute/damage/critDamageAttribute";
+import { chanceCritDamageAttribute } from "@src/core/attribute/damage/chanceCritDamageAttribute";
 
 export class Weapon {
     name: string;

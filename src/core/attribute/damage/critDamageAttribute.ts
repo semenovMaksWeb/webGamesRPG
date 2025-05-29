@@ -1,4 +1,4 @@
-import { Attribute } from "./attribute";
+import { Attribute } from "@src/core/attribute/attribute";
 
 // Критический урон
 export class CritDamageAttribute extends Attribute {
