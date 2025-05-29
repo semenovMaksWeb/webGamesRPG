@@ -6,6 +6,7 @@ export enum ListAttribute {
     damage = "damage",
     nearAddDamage = "nearAddDamage",
     hemorrhage = "hemorrhage",
+    hemorrhageResist= "hemorrhageResist"
 }
 
 
@@ -32,4 +33,8 @@ export enum ListAttributeGain {
 export enum ListAttributeDamage {
     hemorrhage = ListAttribute.hemorrhage,
     damage = ListAttribute.damage,
+}
+
+export enum ListAttributeResistDamage {
+    hemorrhageResist = ListAttribute.hemorrhageResist,
 }

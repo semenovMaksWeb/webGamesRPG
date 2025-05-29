@@ -93,6 +93,15 @@ export class Games {
         return 0;
     }
 
+    // расчет урона при наличие сопротивления
+    damageRisist(damage: number, playerDeff: Player, typeDamage: any) {
+        switch (typeDamage.name) {
+            case ListAttributeDamage.hemorrhage:
+                return damage - (damage * playerDeff.characterPlayer.hemorrhageResistAttribute.getValue() / 100);
+        }
+        return damage;
+    }
+
     // Формула рассчета урона игрока
     damageFormulaPlayer(player1: Player, player2: Player) {
         const coefficientSkillWeapon = this.damageAddSkillWeapon(player1);
@@ -125,13 +134,14 @@ export class Games {
         //Урон: Урон персонажа + урон оружием
         const damageAll = damageCharacterBase + damageWeapon;
 
-        //Урон по игроку: Урон / сопративлении брони
-        const damage = damageAll - (damageAll * player2.characterPlayer.armor.getValue() / 100);
-
+        //Урон по игроку: Урон - сопративлении брони
+        const damageArmor = damageAll - (damageAll * player2.characterPlayer.armor.getValue() / 100);
+        //Урон по игроку: Урон - сопративлении резистов
+        const damageRisist = this.damageRisist(damageArmor, player2, typeDamage);
 
         // Добавление истории игры
-        this.addHistory(player1.name, ActionGamesList.causeDamage, damage);
+        this.addHistory(player1.name, ActionGamesList.causeDamage, damageRisist);
         this.addHistoryTypeDamage(player1.name, isCrit, typeDamage.name);
-        return damage;
+        return damageRisist;
     }
 }

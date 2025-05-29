@@ -4,6 +4,7 @@ import { BarrierAttribute } from "@src/core/attribute/defensive/barrierAttribute
 import { HealthAttribute } from "@src/core/attribute/defensive/healthAttribute";
 import { SpeedDamageAttribute } from "@src/core/attribute/damage/speedDamageAttribute";
 import { NearAddDamageAttribute } from "@src/core/attribute/damage/nearAddDamageAttribute";
+import { HemorrhageResistAttribute } from "../attribute/resist/hemorrhageResistAttribute";
 
 export class Character {
     public health: HealthAttribute;
@@ -12,6 +13,7 @@ export class Character {
     public damage: DamageAttribute;
     public speed: SpeedDamageAttribute;
     public nearAddDamage: NearAddDamageAttribute;
+    public hemorrhageResistAttribute: HemorrhageResistAttribute
     public name: string;
 
     constructor(
@@ -21,7 +23,8 @@ export class Character {
         barrier: number,
         damage: number,
         speed: number,
-        nearAddDamage: number = 0
+        nearAddDamage: number = 0,
+        hemorrhageResistAttribute: number = 0
     ) {
         this.name = name;
         this.health = new HealthAttribute(health);
@@ -30,5 +33,6 @@ export class Character {
         this.damage = new DamageAttribute(damage);
         this.speed = new SpeedDamageAttribute(speed);
         this.nearAddDamage = new NearAddDamageAttribute(nearAddDamage);
+        this.hemorrhageResistAttribute = new HemorrhageResistAttribute(hemorrhageResistAttribute);
     }
 }
