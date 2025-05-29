@@ -1,4 +1,4 @@
-import { Attribute } from "./attribute";
+import { Attribute } from "@src/core/attribute/attribute";
 
 // Шанс критического урон
 export class chanceCritDamageAttribute extends Attribute {

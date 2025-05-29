@@ -4,7 +4,8 @@ export enum ListAttribute {
     barrier = "barrier",
     speed = "speed",
     damage = "damage",
-    nearAddDamage = "nearAddDamage"
+    nearAddDamage = "nearAddDamage",
+    hemorrhage = "hemorrhage",
 }
 
 
@@ -25,5 +26,10 @@ export enum ListAttributeWeapon {
 export enum ListAttributeGain {
     health = ListAttribute.health,
     armor = ListAttribute.armor,
+    damage = ListAttribute.damage,
+}
+
+export enum ListAttributeDamage {
+    hemorrhage = ListAttribute.hemorrhage,
     damage = ListAttribute.damage,
 }

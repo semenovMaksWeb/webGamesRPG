@@ -11,6 +11,9 @@ export const ActionGamesListText: any = {
     },
     4: {
         name: "Критический урон"
+    },
+    5: {
+        name: "Тип урона"
     }
 }
 
@@ -20,4 +23,5 @@ export enum ActionGamesList {
     "getDamageBarrier" = 2,
     "causeDamage" = 3,
     "isCrit" = 4,
+    "typeDamage" = 5,
 }

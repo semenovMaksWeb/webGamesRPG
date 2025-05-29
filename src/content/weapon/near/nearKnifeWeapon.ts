@@ -6,6 +6,7 @@ export class NearKnifeWeapon extends Weapon {
         const configWeapon = {
             speed: 1.2,
             damage: 7,
+            hemorrhage: 3,
             // Добавить механику кровотечения
         };
 
@@ -13,7 +14,10 @@ export class NearKnifeWeapon extends Weapon {
             "Нож",
             WEAPON_LIST_TYPE.NEAR,
             configWeapon.damage,
-            configWeapon.speed
+            configWeapon.speed,
+            0,
+            0,
+            configWeapon.hemorrhage
         )
     }
 }

@@ -1,3 +1,4 @@
+import { ListAttributeDamage } from "../attribute/ListAttribute";
 import { getRandomInt } from "../libs/getRandomInt";
 import { Player } from "../player/player";
 import { WEAPON_LIST_TYPE } from "../weapon/weaponListType";
@@ -60,8 +61,36 @@ export class Games {
         this.addHistory(character.name, ActionGamesList.getDamageXp, damage);
     }
 
-    checkTypeDamage(name: string, isCrit: number) {
+    // сохранения в истории типов урона 
+    addHistoryTypeDamage(name: string, isCrit: number, typeDamage: string) {
         this.addHistory(name, ActionGamesList.isCrit, isCrit);
+        this.addHistory(name, ActionGamesList.typeDamage, typeDamage);
+    }
+
+    // Получить список доступных типов урона 
+    getTypeListDamage(player1: Player) {
+        const typeListDamage = [{ name: ListAttributeDamage.damage, value: player1.weaponPlayer.damage.getValue() }];
+        const hemorrhage = player1.weaponPlayer.hemorrhageAttribute.getValue();
+        if (hemorrhage !== 0) {
+            typeListDamage.push({ name: ListAttributeDamage.hemorrhage, value: hemorrhage });
+        }
+
+        return typeListDamage;
+    }
+
+    // определения урона с учетом типа урона
+    damageAddType(typeDamage: any, damageWeaponBase: number, playerDeff: Player) {
+        switch (typeDamage.name) {
+            case ListAttributeDamage.hemorrhage:
+                const addDamageXp = 50; // Добавляет урон к хп
+                const remoreDamageBarrier = 50; // уменьшает урон к барьеру
+                if (playerDeff.characterPlayer.barrier.getValue() !== 0) {
+                    return (damageWeaponBase * typeDamage.value / 100) - (damageWeaponBase * remoreDamageBarrier / 100)
+                }
+                return damageWeaponBase * typeDamage.value / 100 + (damageWeaponBase * addDamageXp / 100)
+        }
+
+        return 0;
     }
 
     // Формула рассчета урона игрока
@@ -69,6 +98,7 @@ export class Games {
         const coefficientSkillWeapon = this.damageAddSkillWeapon(player1);
         // Урон: Обычный урон оружие * Скорость атаки оружие
         const damageWeaponBase = player1.weaponPlayer.damage.getValue() * player1.weaponPlayer.speed.getValue();
+
         //Урон: Обычный урон персонажа * Скорость атаки персонажа
         const damageCharacterBase = player1.characterPlayer.damage.getValue() * player1.characterPlayer.speed.getValue();
         // Урон с учетом прокачки персонажа на тип оружия.
@@ -78,17 +108,30 @@ export class Games {
         const chanceCrit = getRandomInt(0, 95);
         const isCrit = chanceCrit <= player1.weaponPlayer.chanceCritDamage.getValue() ? 1 : 0;
 
+
+        // Определения типа урона
+        const typeListDamage = this.getTypeListDamage(player1);
+        const typeDamageIndex = getRandomInt(0, typeListDamage.length - 1);
+        const typeDamage = typeListDamage[typeDamageIndex];
+
         // критический урон
         const damageCritWeapon = (damageWeaponBase * player1.weaponPlayer.critDamage.getValue() / 100 * isCrit);
-        //Урон: урон оружие + обработка прокачки умения оружием у персонажа + крит урон
-        const damageWeapon = damageWeaponBase + damageSkillWeapon + damageCritWeapon;
+
+        const damageType = this.damageAddType(typeDamage, damageWeaponBase, player2);
+
+        //Урон: урон оружие + обработка прокачки умения оружием у персонажа + крит урон + учет типа урона
+        const damageWeapon = damageWeaponBase + damageSkillWeapon + damageCritWeapon + damageType;
+
         //Урон: Урон персонажа + урон оружием
         const damageAll = damageCharacterBase + damageWeapon;
+
         //Урон по игроку: Урон / сопративлении брони
         const damage = damageAll - (damageAll * player2.characterPlayer.armor.getValue() / 100);
+
+
         // Добавление истории игры
         this.addHistory(player1.name, ActionGamesList.causeDamage, damage);
-        this.checkTypeDamage(player1.name, isCrit);
+        this.addHistoryTypeDamage(player1.name, isCrit, typeDamage.name);
         return damage;
     }
 }

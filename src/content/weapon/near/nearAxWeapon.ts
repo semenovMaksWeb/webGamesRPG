@@ -8,6 +8,7 @@ export class NearAxWeapon extends Weapon {
             damage: 14,
             critDamage: 40,
             chanceCritDamage: 10,
+            hemorrhage: 3,
         };
 
         super(
@@ -16,7 +17,8 @@ export class NearAxWeapon extends Weapon {
             configWeapon.damage,
             configWeapon.speed,
             configWeapon.critDamage,
-            configWeapon.chanceCritDamage
+            configWeapon.chanceCritDamage,
+            configWeapon.hemorrhage
         )
     }
 }
