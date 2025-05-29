@@ -99,6 +99,6 @@ export class Account {
             gainWeapon,
             this.config.weapon[indexWeapon].experience,
         )
-        return new Player(character, weapon, characterExample, weaponExample);
+        return new Player(this.config.user.name, character, weapon, characterExample, weaponExample);
     }
 }

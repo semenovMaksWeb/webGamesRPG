@@ -1,4 +1,4 @@
-import { gamesPlayer } from "./core/games/games";
+import { gamesPlayer } from "./core/games/gamesFun";
 import { Account } from "./core/account/account";
 import config1 from "@src/test/accountAdmin.json"
 import config2 from "@src/test/accountAdmin2.json"
