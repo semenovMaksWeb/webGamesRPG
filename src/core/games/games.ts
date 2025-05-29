@@ -137,7 +137,7 @@ export class Games {
         //Урон по игроку: Урон - сопративлении брони
         const damageArmor = damageAll - (damageAll * player2.characterPlayer.armor.getValue() / 100);
         //Урон по игроку: Урон - сопративлении резистов
-        const damageRisist = this.damageRisist(damageArmor, player2, typeDamage);
+        const damageRisist = this.damageRisist(damageArmor, player2, typeDamage).toFixed(3);
 
         // Добавление истории игры
         this.addHistory(player1.name, ActionGamesList.causeDamage, damageRisist);
