@@ -6,9 +6,10 @@
   "main": "./dist/gui/main.js",
   "scripts": {
     "build": "rimraf ./dist && tsc",
-    "dev": "npx nodemon",
+    "dev": "npx nodemon --config nodemon.json",
+    "dev:electron": "npx nodemon --config nodemonElectron.json",
     "start": "npm run dist && node dist/index.js",
-    "start:electron": "electron ."
+    "start:electron": "npm run build && electron ."
   },
   "devDependencies": {
     "@types/electron": "^1.6.12",
