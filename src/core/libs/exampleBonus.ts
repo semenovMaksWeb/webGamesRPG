@@ -1,7 +1,7 @@
 import { ListAttributeCharacter, ListAttributeGain, ListAttributeWeapon } from "@src/core/attribute/ListAttribute";
 import { Character } from "@src/core/character/character";
 import { Weapon } from "../weapon/weapon";
-import { GainExample } from "../example/character/gainExample";
+import { GainExample } from "../example/gainExample";
 
 export interface ExampleBonus {
     name: string;

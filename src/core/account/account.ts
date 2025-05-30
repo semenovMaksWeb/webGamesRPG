@@ -2,11 +2,11 @@ import { characterList } from "@src/core/character/characterList";
 import { Player } from "@src/core/player/player";
 import { AccountConfig, AccountConfiGain, AccountConfigCharacter, AccountConfigWeapon } from "@src/core/account/AccountConfig";
 import { FellerСharacter } from "@src/content/character/fellerСharacter"
-import { CharacterExample } from "@src/core/example/character/characterExample";
+import { CharacterExample } from "@src/core/example/characterExample";
 import { weaponList } from "@src/core/weapon/weaponList";
-import { GainExample } from "@src/core/example/character/gainExample";
+import { GainExample } from "@src/core/example/gainExample";
 import { gainList } from "@src/core/gain/gainList";
-import { WeaponExample } from "@src/core/example/character/weaponExample";
+import { WeaponExample } from "@src/core/example/weaponExample";
 
 import { LookNoviceWeapon } from "@src/content/weapon/look/lookNoviceWeapon";
 import { LookPowerWeapon } from "@src/content/weapon/look/lookPowerWeapon";

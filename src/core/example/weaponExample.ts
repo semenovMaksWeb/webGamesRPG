@@ -1,7 +1,7 @@
 import { ExampleBonus, ExampleBonusWeaponCall } from "@src/core/libs/exampleBonus";
 import { cloneClass } from "@src/core/libs/cloneClass";
 import { Weapon } from "@src/core/weapon/weapon";
-import { GainExample } from "./gainExample";
+import { GainExample } from "@src/core/example/gainExample";
 import { Experience } from "@src/core/experience/experience";
 
 // Экземлпяр оружие с своей прокачкой и вставленными модами
