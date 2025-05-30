@@ -4,5 +4,5 @@
     ],
     "ext": ".ts,.js",
     "ignore": [],
-    "exec": "tsc && electron ."
+    "exec": "rimraf ./dist && tsc && electron ."
 }
