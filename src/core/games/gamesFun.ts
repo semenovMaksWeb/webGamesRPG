@@ -5,13 +5,14 @@ import { Games } from "./games";
 // Функция игры 2 игроков
 export function gamesPlayer(player1: Player, player2: Player) {
     const games = new Games([player1, player2]);
+    let characterXod = 1;
     while (true) {
 
-        if (games.characterXod == 1) {
+        if (characterXod == 1) {
             games.effectRemoveXod(player1);
         }
 
-        if (games.characterXod == 2) {
+        if (characterXod == 2) {
             games.effectRemoveXod(player2);
         }
 
@@ -21,13 +22,13 @@ export function gamesPlayer(player1: Player, player2: Player) {
             break;
         }
 
-        if (games.characterXod == 1) {
+        if (characterXod == 1) {
             xodPlayer(player1, player2);
-            games.characterXod = 2;
+            characterXod = 2;
 
-        } else if (games.characterXod == 2) {
+        } else if (characterXod == 2) {
             xodPlayer(player2, player1);
-            games.characterXod = 1;
+            characterXod = 1;
         }
     }
 
