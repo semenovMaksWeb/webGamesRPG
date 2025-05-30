@@ -1,4 +1,5 @@
-import { ExampleBonus } from "../libs/exampleBonus";
+import { Coins } from "@src/core/coins/coins";
+import { ExampleBonus } from "@src/core/libs/exampleBonus";
 
 export interface AccountConfig {
     user: {
@@ -9,7 +10,8 @@ export interface AccountConfig {
 
     weapon: AccountConfigWeapon[],
 
-    gain: AccountConfiGain[]
+    gain: AccountConfiGain[],
+    coins: Coins[],
 }
 
 export interface AccountConfiGain {
