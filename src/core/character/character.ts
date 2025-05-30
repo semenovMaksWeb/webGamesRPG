@@ -4,7 +4,8 @@ import { BarrierAttribute } from "@src/core/attribute/defensive/barrierAttribute
 import { HealthAttribute } from "@src/core/attribute/defensive/healthAttribute";
 import { SpeedDamageAttribute } from "@src/core/attribute/damage/speedDamageAttribute";
 import { NearAddDamageAttribute } from "@src/core/attribute/damage/nearAddDamageAttribute";
-import { HemorrhageResistAttribute } from "../attribute/resist/hemorrhageResistAttribute";
+import { HemorrhageResistAttribute } from "@src/core/attribute/resist/hemorrhageResistAttribute";
+import { Coins } from "@src/core/coins/coins";
 
 export class Character {
     public health: HealthAttribute;
@@ -15,9 +16,11 @@ export class Character {
     public nearAddDamage: NearAddDamageAttribute;
     public hemorrhageResistAttribute: HemorrhageResistAttribute
     public name: string;
+    private coinsList: Coins[]
 
     constructor(
         name: string,
+        coinsList: Coins[],
         health: number,
         armor: number,
         barrier: number,
@@ -27,6 +30,7 @@ export class Character {
         hemorrhageResistAttribute: number = 0
     ) {
         this.name = name;
+        this.coinsList = coinsList;
         this.health = new HealthAttribute(health);
         this.armor = new ArmorAttribute(armor);
         this.barrier = new BarrierAttribute(barrier);

@@ -1,4 +1,6 @@
 import { Character } from "@src/core/character/character";
+import { Coins } from "@src/core/coins/coins";
+import { coinsList } from "@src/core/coins/coinsList";
 
 export class FellerСharacter extends Character {
     constructor() {
@@ -9,10 +11,15 @@ export class FellerСharacter extends Character {
             damage: 20,
             speed: 1,
             nearAddDamage: 20,
+            coinsList: [
+                new Coins(coinsList.wooden, 40),
+                new Coins(coinsList.battle, 10),
+            ]
 
         }
         super(
             "Лесоруб",
+            characterConfig.coinsList,
             characterConfig.health,
             characterConfig.armor,
             characterConfig.barrier,
