@@ -1,0 +1,7 @@
+.navCoins {
+    display: flex;
+    gap: 5px;
+    background-color: #008000;
+    color: #fff;
+    padding: 10px 15px;
+}

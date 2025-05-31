@@ -6,7 +6,7 @@ export function createMenuMain() {
     function clickNavMain(key: any) {
         switch (key) {
             case 'games':
-                console.log("games");                
+                console.log("games");
                 break;
         }
     }
@@ -55,7 +55,7 @@ export function createMenuMain() {
         nav.append(div);
     }
 
-    APP.innerHTML = nav.outerHTML;
+    APP.append(nav);
 
     const navDom = document.querySelector(".navMain") as HTMLElement;
     navDom.onclick = (event: any) => {
