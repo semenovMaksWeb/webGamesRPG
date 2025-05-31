@@ -10,6 +10,22 @@ function IndexedDBService() {
             if (!db.objectStoreNames.contains('user')) {
                 db.createObjectStore('user', { keyPath: 'id' });
             }
+
+            if (!db.objectStoreNames.contains('weapon')) {
+                db.createObjectStore('weapon', { keyPath: 'id', autoIncrement: true });
+            }
+
+            if (!db.objectStoreNames.contains('gain')) {
+                db.createObjectStore('gain', { keyPath: 'id', autoIncrement: true });
+            }
+
+            if (!db.objectStoreNames.contains('coins')) {
+                db.createObjectStore('coins', { keyPath: 'id', autoIncrement: true });
+            }
+
+            if (!db.objectStoreNames.contains('character')) {
+                db.createObjectStore('character', { keyPath: 'id', autoIncrement: true });
+            }
         }
         openRequest.onerror = (event: any) => {
             reject(event.target.error);
@@ -20,7 +36,7 @@ function IndexedDBService() {
     function getResult(iDBRequest: IDBRequest<any>) {
         return new Promise((resolve, reject) => {
             iDBRequest.onsuccess = function () {
-                console.log(iDBRequest.result);                
+                console.log(iDBRequest.result);
                 resolve(iDBRequest.result);
             };
         })
