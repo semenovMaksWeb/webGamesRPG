@@ -11,7 +11,7 @@ export interface AccountConfig {
     weapon: AccountConfigWeapon[],
 
     gain: AccountConfiGain[],
-    coins: Coins[],
+    // coins: Coins[],
 }
 
 export interface AccountConfiGain {
