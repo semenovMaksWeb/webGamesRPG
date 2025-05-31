@@ -52,7 +52,6 @@ function IndexedDBService() {
         const userList = transaction.objectStore("user");
         const result = userList.get(1);
         return await getResult(result);
-
     }
 
     // Сохранить пользователя 
@@ -89,12 +88,31 @@ function IndexedDBService() {
     async function createStartUser() {
         await createWeapon(weaponList.NearAxWeapon);
         await createСharacter(characterList.FellerСharacter);
+    }
 
+    // Получить монеты
+    async function getCoins() {
+        const db = await dbPromise;
+        const transaction = db.transaction("coins", "readonly");
+        const userList = transaction.objectStore("coins");
+        const result = userList.getAll();
+        return await getResult(result);
+    }
+
+    async function createCoins(name: string, value: number) {
+        console.log(name);
+        const coins = { id: name, name: name, value: value };
+        const db = await dbPromise;
+        const transaction = db.transaction("coins", "readwrite");
+        const coinsList = transaction.objectStore("coins");
+        coinsList.add(coins);
     }
 
     return {
         createUser,
-        getUser
+        getUser,
+        getCoins,
+        createCoins
     }
 }
 
