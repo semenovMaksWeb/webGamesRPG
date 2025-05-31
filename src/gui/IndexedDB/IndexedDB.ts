@@ -1,3 +1,6 @@
+import { AccountConfigWeapon } from "@src/core/account/AccountConfig";
+import { characterList } from "@src/core/character/characterList";
+import { weaponList } from "@src/core/weapon/weaponList";
 
 function IndexedDBService() {
     const dbPromise: Promise<IDBDatabase> = new Promise((resolve, reject) => {
@@ -5,6 +8,7 @@ function IndexedDBService() {
         openRequest.onsuccess = function () {
             resolve(openRequest.result);
         }
+        // Логика создание сущностей
         openRequest.onupgradeneeded = () => {
             const db = openRequest.result;
             if (!db.objectStoreNames.contains('user')) {
@@ -32,16 +36,16 @@ function IndexedDBService() {
         };
     });
 
-
+    // общая логика получение ответа
     function getResult(iDBRequest: IDBRequest<any>) {
         return new Promise((resolve, reject) => {
             iDBRequest.onsuccess = function () {
-                console.log(iDBRequest.result);
                 resolve(iDBRequest.result);
             };
         })
     }
 
+    // Получить пользователя 
     async function getUser() {
         const db = await dbPromise;
         const transaction = db.transaction("user", "readonly");
@@ -51,8 +55,7 @@ function IndexedDBService() {
 
     }
 
-    //  db.createObjectStore("users", { keyPath: "id", autoIncrement: true });
-
+    // Сохранить пользователя 
     async function createUser(name: string) {
         const db = await dbPromise;
         if (!await getUser()) {
@@ -60,7 +63,32 @@ function IndexedDBService() {
             const userList = transaction.objectStore("user");
             const user = { id: 1, name: name };
             userList.add(user);
+            await createStartUser();
         }
+
+    }
+    // Добавить новое оружие
+    async function createWeapon(name: string) {
+        const db = await dbPromise;
+        const transaction = db.transaction("weapon", "readwrite");
+        const weapon: AccountConfigWeapon = { name: name, bonus: [], level: 1, gain: [], experience: 0 }
+        const weaponList = transaction.objectStore("weapon");
+        weaponList.add(weapon);
+    }
+
+    // Добавить нового персонажа
+    async function createСharacter(name: string) {
+        const db = await dbPromise;
+        const transaction = db.transaction("character", "readwrite");
+        const character: AccountConfigWeapon = { name: name, bonus: [], level: 1, gain: [], experience: 0 }
+        const characterList = transaction.objectStore("character");
+        characterList.add(character);
+    }
+
+    // Старт игры после ввода имя пользователя
+    async function createStartUser() {
+        await createWeapon(weaponList.NearAxWeapon);
+        await createСharacter(characterList.FellerСharacter);
 
     }
 
