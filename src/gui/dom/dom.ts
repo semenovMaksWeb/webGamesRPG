@@ -2,6 +2,7 @@ import { createButton } from "./create/createButton";
 import { createForm } from "./create/createForm";
 import { createInput } from "./create/createInput";
 import { createLogo } from "./create/createLogo";
+import { createMenuMain } from "./create/createMenuMain";
 import { formEventDefault } from "./event/formEventDefault";
 
 export const dom = {
@@ -10,7 +11,8 @@ export const dom = {
         button: createButton,
         input: createInput,
         form: createForm,
-        logo: createLogo
+        logo: createLogo,
+        menuMain: createMenuMain,
     },
     event: {
         form: formEventDefault,
