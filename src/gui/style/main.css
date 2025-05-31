@@ -1,25 +1,28 @@
 :root {
     --border-radius: 2px;
-    --padding-default: 3px 6px;
+    --padding-default: 6px 12px;
     --color-active: #310ff9;
     --color-border: #aaa;
+    --font-size: 24px;
 }
 
 body {
     margin: 0;
+    font-size: var(--font-size);
 }
 
 .button {
-    background-color: transparent;
+    background-color: #008000;
+    color: #fff;
     border: 1px solid var(--color-border);
     cursor: pointer;
     border-radius: var(--border-radius);
     padding: var(--padding-default);
+    font-size: var(--font-size);
 }
 
 .button:hover {
     background-color: var(--color-active);
-    color: #fff;
 }
 
 .input {
@@ -27,9 +30,23 @@ body {
     border-radius: var(--border-radius);
     border: 0;
     outline: 1px solid var(--color-border);
+    font-size: var(--font-size);
 }
 
 .input:focus-visible {
     outline: 1px solid var(--color-active);
     border-radius: var(--border-radius);
+}
+
+.img {
+    width: 100%;
+    height: auto;
+}
+
+.fieldset {
+    border: 1px solid var(--color-border);
+}
+
+.legend {
+    padding: 0 5px;
 }

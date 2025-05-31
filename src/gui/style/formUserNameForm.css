@@ -1,12 +1,30 @@
-.formUserNameForm {
+.formUserNameFormWrapper {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 
     height: 100vh;
 }
 
-.formUserNameForm .input {
+.formUserNameForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formUserNameForm .fieldset {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formUserNameForm .label {
+    align-self: baseline;
+    padding-left: 5px;
+}
+
+.formUserNameForm .logo {
     margin-bottom: 5px;
+    width: 150px;
+    height: 150px;
 }
