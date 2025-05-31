@@ -1,12 +1,12 @@
 import { indexedDBService } from "@src/gui/IndexedDB/IndexedDB";
 import { formUserNameForm } from "@src/gui/page/formUserNameForm";
 
-console.log(1);
+(async () => {
+    const getUser = await indexedDBService.getUser();
 
+    if (!getUser) {
+        formUserNameForm();
+    }
 
-const getUser = indexedDBService.getUser();
-
-if (!getUser) {
-    formUserNameForm();
-}
+})();
 
