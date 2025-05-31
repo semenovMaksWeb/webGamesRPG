@@ -1,6 +1,7 @@
 import { dom } from "@src/gui/dom/dom";
 import "@src/gui/style/formUserNameForm.css"
 import { indexedDBService } from "@src/gui/IndexedDB/IndexedDB";
+import { mainPage } from "@src/gui/page/mainPage";
 
 export function formUserNameForm() {
     const APP = document.querySelector("#APP") as Element;
@@ -45,5 +46,6 @@ export function formUserNameForm() {
             return;
         }
         await indexedDBService.createUser(inputDom.value);
+        mainPage();
     })
 }
