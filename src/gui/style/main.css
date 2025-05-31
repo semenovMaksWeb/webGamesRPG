@@ -1,0 +1,35 @@
+:root {
+    --border-radius: 2px;
+    --padding-default: 3px 6px;
+    --color-active: #310ff9;
+    --color-border: #aaa;
+}
+
+body {
+    margin: 0;
+}
+
+.button {
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    padding: var(--padding-default);
+}
+
+.button:hover {
+    background-color: var(--color-active);
+    color: #fff;
+}
+
+.input {
+    padding: var(--padding-default);
+    border-radius: var(--border-radius);
+    border: 0;
+    outline: 1px solid var(--color-border);
+}
+
+.input:focus-visible {
+    outline: 1px solid var(--color-active);
+    border-radius: var(--border-radius);
+}
