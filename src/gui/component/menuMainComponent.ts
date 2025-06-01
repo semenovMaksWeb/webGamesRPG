@@ -2,6 +2,7 @@ import "@src/gui/style/navMain.css"
 import { navComponent } from "@src/gui/component/navComponent"
 import { LogoComponent } from "@src/gui/component/logoComponent";
 import { gamesPage } from "@src/gui/page/gamesPage";
+import { inventoryPage } from "../page/inventoryPage";
 
 export function MenuMainComponent() {
 
@@ -10,6 +11,16 @@ export function MenuMainComponent() {
             text: "Игра",
             class: "active",
             key: "games",
+        },
+        {
+            text: "Инвентарь",
+            class: null,
+            key: "inventory",
+        },
+        {
+            text: "Магазин",
+            class: null,
+            key: "shop",
         },
         {
             text: "Руководство",
@@ -47,13 +58,16 @@ export function MenuMainComponent() {
         div.dataset.key = navMainItem.key;
         div.innerHTML = navMainItem.text;
 
-        div.addEventListener("click", (event: any) => {
+        div.addEventListener("click", async (event: any) => {
             const navItemActiveDom = document.querySelector(".navMain .active") as HTMLElement;
             navItemActiveDom.classList.remove("active");
             event.target.classList.add("active");
             switch (event.target.dataset.key) {
-                case 'games':
+                case "games":
                     gamesPage();
+                    break;
+                case "inventory":
+                    await inventoryPage();
                     break;
             }
         })

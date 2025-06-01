@@ -54,6 +54,25 @@ function IndexedDBService() {
         return await getResult(result);
     }
 
+    // Получить персонажей
+    async function getСharacter() {
+        const db = await dbPromise;
+        const transaction = db.transaction("character", "readonly");
+        const characterList = transaction.objectStore("character");
+        const characterResult = characterList.getAll();
+        return await getResult(characterResult);
+    }
+
+    // Получить оружия
+    async function getWeapon() {
+        const db = await dbPromise;
+        const transaction = db.transaction("weapon", "readonly");
+        const weaponList = transaction.objectStore("weapon");
+        const weaponResult = weaponList.getAll();
+        return await getResult(weaponResult);
+    }
+
+
     // Сохранить пользователя 
     async function createUser(name: string) {
         const db = await dbPromise;
@@ -110,9 +129,11 @@ function IndexedDBService() {
 
     return {
         createUser,
+        createCoins,
         getUser,
         getCoins,
-        createCoins
+        getСharacter,
+        getWeapon,
     }
 }
 
