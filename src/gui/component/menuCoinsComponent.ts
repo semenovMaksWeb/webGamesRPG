@@ -1,13 +1,15 @@
 import { coinsList, coinsListInfo } from "@src/core/coins/coinsList";
-import { indexedDBService } from "@src/gui/IndexedDB/IndexedDB";
+import { navComponent } from "@src/gui/component/navComponent";
+import { indexedDBService } from "../IndexedDB/IndexedDB";
 import "@src/gui/style/navCoins.css"
 
-export async function createMenuCoins() {
 
-    const nav = document.createElement("nav");
-    nav.classList.add("nav");
+export async function MenuCoinsComponent() {
+    // Создание пустого меню
+    const nav = navComponent();
     nav.classList.add("navCoins");
 
+    // Проверка наличия всех монет в БД
     let navCoinsItemList = await indexedDBService.getCoins() as any;
     if (navCoinsItemList.length !== Object.keys(coinsList).length) {
 
@@ -20,16 +22,15 @@ export async function createMenuCoins() {
                 indexedDBService.createCoins(key, 0);
             }
         }
-
         navCoinsItemList = await indexedDBService.getCoins() as any;
     }
 
+    // Отрисовка монет
     for (const navCoinsItem of navCoinsItemList) {
         const div = document.createElement("div");
         div.classList.add("navCoinsItem");
         div.innerHTML = `${coinsListInfo[navCoinsItem.id].name}: ${navCoinsItem.value}`;
-        nav.append(div);
+        nav.appendChild(div);
     }
-
     return nav;
 }

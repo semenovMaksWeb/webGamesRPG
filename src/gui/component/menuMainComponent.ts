@@ -1,23 +1,11 @@
 import "@src/gui/style/navMain.css"
-import { dom } from "@src/gui/dom/dom";
+import { navComponent } from "@src/gui/component/navComponent"
+import { LogoComponent } from "@src/gui/component/logoComponent";
+import { gamesPage } from "@src/gui/page/gamesPage";
 
-export function createMenuMain() {
+export function MenuMainComponent() {
 
-    function clickNavMain(key: any) {
-        switch (key) {
-            case 'games':
-                console.log("games");
-                break;
-        }
-    }
-
-    const APP = document.querySelector("#APP") as Element;
-
-    const nav = document.createElement("nav");
-    nav.classList.add("nav");
-    nav.classList.add("navMain");
-
-    const navMainItemList = [
+    const NAV_MAIN_ITEM_LIST = [
         {
             text: "Игра",
             class: "active",
@@ -40,30 +28,37 @@ export function createMenuMain() {
         }
     ]
 
-    const logo = dom.create.logo();
-    nav.append(logo);
+    // Создание пустого меню
+    const nav = navComponent();
+    nav.classList.add("navMain");
 
-    for (const navMainItem of navMainItemList) {
+    // Создание logo
+    const logo = LogoComponent();
+    nav.appendChild(logo);
+
+    for (const navMainItem of NAV_MAIN_ITEM_LIST) {
         const div = document.createElement("div");
         div.classList.add("navMainItem");
+
         if (navMainItem.class) {
             div.classList.add(navMainItem.class);
-            clickNavMain(navMainItem.key);
         }
+
         div.dataset.key = navMainItem.key;
         div.innerHTML = navMainItem.text;
-        nav.append(div);
-    }
 
-    APP.append(nav);
-
-    const navDom = document.querySelector(".navMain") as HTMLElement;
-    navDom.onclick = (event: any) => {
-        if (event.target.classList.contains("navMainItem") && event.target.dataset.key) {
+        div.addEventListener("click", (event: any) => {
             const navItemActiveDom = document.querySelector(".navMain .active") as HTMLElement;
             navItemActiveDom.classList.remove("active");
             event.target.classList.add("active");
-            clickNavMain(event.target.dataset.key);
-        }
+            switch (event.target.dataset.key) {
+                case 'games':
+                    gamesPage();
+                    break;
+            }
+        })
+
+        nav.appendChild(div);
     }
+    return nav;
 }
