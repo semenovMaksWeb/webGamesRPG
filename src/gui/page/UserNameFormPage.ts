@@ -3,10 +3,10 @@ import { indexedDBService } from "@src/gui/IndexedDB/IndexedDB";
 import { mainPage } from "@src/gui/page/mainPage";
 import { ButtonComponent } from "@src/gui/component/buttonComponent";
 import { LogoComponent } from "@src/gui/component/logoComponent";
-import { FieldsetComponent } from "../component/fieldsetComponent";
-import { InputComponent } from "../component/inputComponent";
-import { LabelComponent } from "../component/labelComponent";
-import { FormComponent } from "../component/formComponent";
+import { FieldsetComponent } from "@src/gui/component/fieldsetComponent";
+import { InputComponent } from "@src/gui/component/inputComponent";
+import { LabelComponent } from "@src/gui/component/labelComponent";
+import { FormComponent } from "@src/gui/component/formComponent";
 
 export function formUserNameForm() {
     const APP = document.querySelector("#APP") as Element;
