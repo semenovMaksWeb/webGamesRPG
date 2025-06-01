@@ -1,4 +1,3 @@
-import { dom } from "@src/gui/dom/dom";
 import "@src/gui/style/formUserNameForm.css"
 import { indexedDBService } from "@src/gui/IndexedDB/IndexedDB";
 import { mainPage } from "@src/gui/page/mainPage";
