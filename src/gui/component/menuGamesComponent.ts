@@ -1,10 +1,17 @@
 import { navComponent } from "./navComponent";
+import "@src/gui/style/navGames.css"
+
 
 export function MenuGamesComponent() {
     const NAV_GAMES_ITEM_LIST = [
         {
-            text: "Инвентарь",
+            text: "Играть",
             class: "active",
+            key: "games",
+        },
+        {
+            text: "Инвентарь",
+            class: null,
             key: "inventory",
         },
         {

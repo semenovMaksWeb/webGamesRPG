@@ -1,0 +1,23 @@
+.navGames {
+    max-width: 300px;
+    background-color: var(--color-active);
+    color: #fff;
+    border: 1px solid var(--color-active);
+    padding: 8px 4px 2px;
+}
+
+.navGamesItem {
+    cursor: pointer;
+    margin-bottom: 5px;
+    padding: 12px 6px;
+}
+
+.navGamesItem:last-child {
+    margin-bottom: 0;
+}
+
+.navGamesItem:hover,
+.navGamesItem.active {
+    background-color: #fff;
+    color: var(--color-active);
+}
