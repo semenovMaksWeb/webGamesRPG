@@ -1,4 +1,4 @@
-export function createInput(idAttribute: string) {
+export function InputComponent(idAttribute: string) {
     const input = document.createElement("input");
     input.classList.add("input");
     input.setAttribute("id", idAttribute);

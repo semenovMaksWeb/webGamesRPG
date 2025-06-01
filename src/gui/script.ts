@@ -10,7 +10,6 @@ import { mainPage } from "@src/gui/page/mainPage";
         formUserNameForm();
         return;
     }
-    mainPage();
-
+    await mainPage();
 })();
 

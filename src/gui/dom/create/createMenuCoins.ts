@@ -4,8 +4,6 @@ import "@src/gui/style/navCoins.css"
 
 export async function createMenuCoins() {
 
-    const APP = document.querySelector("#APP") as Element;
-
     const nav = document.createElement("nav");
     nav.classList.add("nav");
     nav.classList.add("navCoins");
@@ -33,5 +31,5 @@ export async function createMenuCoins() {
         nav.append(div);
     }
 
-    APP.append(nav);
+    return nav;
 }
