@@ -5,7 +5,7 @@ import { Character } from "@src/core/character/character";
 import { getRandomInt } from "@src/core/libs/getRandomInt";
 import { effectList } from "@src/core/effect/effectList";
 import { Effect } from "@src/core/effect/effect";
-import { WEAPON_LIST_TYPE } from "@src/core/weapon/weaponListType";
+import { WEAPON_LIST_TYPE } from "@src/content/weapon/weaponListType";
 import { Weapon } from "../weapon/weapon";
 import { ActionGamesList, ActionGamesListText } from "./actionGamesList";
 

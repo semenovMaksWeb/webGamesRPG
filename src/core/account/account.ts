@@ -1,21 +1,9 @@
-import { characterList } from "@src/core/character/characterList";
 import { Player } from "@src/core/player/player";
-import { AccountConfig, AccountConfiGain, AccountConfigCharacter, AccountConfigWeapon } from "@src/core/account/AccountConfig";
-import { FellerСharacter } from "@src/content/character/fellerСharacter"
+import { AccountConfig } from "@src/core/account/AccountConfig";
 import { CharacterExample } from "@src/core/example/characterExample";
-import { weaponList } from "@src/core/weapon/weaponList";
-import { GainExample } from "@src/core/example/gainExample";
-import { gainList } from "@src/core/gain/gainList";
 import { WeaponExample } from "@src/core/example/weaponExample";
+import { accountFun } from "@src/core/account/accountFun";
 
-import { LookNoviceWeapon } from "@src/content/weapon/look/lookNoviceWeapon";
-import { LookPowerWeapon } from "@src/content/weapon/look/lookPowerWeapon";
-import { NearAxWeapon } from "@src/content/weapon/near/nearAxWeapon";
-import { NearKnifeWeapon } from "@src/content/weapon/near/nearKnifeWeapon";
-import { ArmorGain } from "@src/content/gain/character/armorGain";
-import { HealthGain } from "@src/content/gain/character/healthGain";
-import { DamageWeaponGain } from "@src/content/gain/weapon/damageWeaponGain";
-import { LookVampireWeapon } from "@src/content/weapon/look/lookVampireWeapon";
 
 export class Account {
     public config: AccountConfig;
@@ -24,61 +12,17 @@ export class Account {
         this.config = config;
     }
 
-    private generatorCharacter(activeConfigCharacter: AccountConfigCharacter) {
-        switch (activeConfigCharacter.name) {
-            case characterList.FellerСharacter:
-                return new FellerСharacter();
-        }
-    }
-
-    private generatorWeapon(activeConfigWeapon: AccountConfigWeapon) {
-        switch (activeConfigWeapon.name) {
-            case weaponList.LookNoviceWeapon:
-                return new LookNoviceWeapon();
-
-            case weaponList.LookPowerWeapon:
-                return new LookPowerWeapon();
-
-            case weaponList.LookVampireWeapon:
-                return new LookVampireWeapon();
-
-            case weaponList.NearAxWeapon:
-                return new NearAxWeapon();
-
-            case weaponList.NearKnifeWeapon:
-                return new NearKnifeWeapon();
-        }
-    }
-
-    private generatorGain(gain: AccountConfiGain[]) {
-        const gainClass: GainExample[] = [];
-        for (const gainItem of gain) {
-            switch (gainItem.name) {
-                case gainList.armorGain:
-                    gainClass.push(new GainExample(new ArmorGain(), gainItem.level, gainItem.experience));
-                    break;
-
-                case gainList.damageWeaponGain:
-                    gainClass.push(new GainExample(new DamageWeaponGain(), gainItem.level, gainItem.experience));
-                    break;
-
-                case gainList.healthGain:
-                    gainClass.push(new GainExample(new HealthGain(), gainItem.level, gainItem.experience));
-                    break;
-            }
-        }
-        return gainClass;
-    }
 
 
     configConvertToPlayer(
         indexCharacter: number,
         indexWeapon: number
     ) {
-        const character = this.generatorCharacter(this.config.character[indexCharacter]);
-        const weapon = this.generatorWeapon(this.config.weapon[indexWeapon]);
-        const gainCharacter = this.generatorGain(this.config.character[indexCharacter].gain);
-        const gainWeapon = this.generatorGain(this.config.weapon[indexWeapon].gain);
+        const { generatorCharacter, generatorGain, generatorWeapon } = accountFun();
+        const character = generatorCharacter(this.config.character[indexCharacter]);
+        const weapon = generatorWeapon(this.config.weapon[indexWeapon]);
+        const gainCharacter = generatorGain(this.config.character[indexCharacter].gain);
+        const gainWeapon = generatorGain(this.config.weapon[indexWeapon].gain);
 
         if (!character || !weapon) {
             throw new Error();

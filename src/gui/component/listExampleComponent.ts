@@ -1,6 +1,5 @@
 import { CharacterExample } from "@src/core/example/characterExample";
 import { WeaponExample } from "@src/core/example/weaponExample";
-import { WEAPON_LIST_TYPE_TEXT } from "@src/core/weapon/weaponListType";
 
 export function ListExampleComponent(
     listWeaponExample: WeaponExample[],
@@ -19,11 +18,11 @@ export function ListExampleComponent(
 
     for (const weaponItem of listWeaponExample) {
         const name = weaponItem.weapon.name;
-        const type = weaponItem.weapon.type;
+        const typeText = weaponItem.weapon.typeText;
         const level = weaponItem.experience.level;
         const weaponItemDom = document.createElement("div");
         weaponItemDom.classList.add("weaponItem");
-        weaponItemDom.innerHTML = `${name}-${WEAPON_LIST_TYPE_TEXT[type]}-${level}ур.`
+        weaponItemDom.innerHTML = `${name}-${typeText}-${level}ур.`
         divWeapon.appendChild(weaponItemDom);
     }
 

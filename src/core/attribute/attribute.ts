@@ -3,10 +3,23 @@ export class Attribute {
     private value: number = 0; // Значения атрибута числовое значение
     public readonly minValue: number | null; // Минимальное значение атрибута
     public readonly maxValue: number | null; // Максимально значение атрибута
+    public readonly image: string;
+    public readonly name: string;
+    public readonly description: string;
 
-    constructor(value: number, minValue: number | null, maxValue: number | null) {
+    constructor(
+        value: number,
+        minValue: number | null,
+        maxValue: number | null,
+        image: string,
+        name: string,
+        description: string
+    ) {
         this.minValue = minValue;
         this.maxValue = maxValue;
+        this.image = image;
+        this.name = name;
+        this.description = description;
         this.setValue(value);
     }
 

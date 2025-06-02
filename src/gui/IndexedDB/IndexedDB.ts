@@ -1,6 +1,6 @@
 import { AccountConfigWeapon } from "@src/core/account/AccountConfig";
 import { characterList } from "@src/core/character/characterList";
-import { weaponList } from "@src/core/weapon/weaponList";
+import { weaponList } from "@src/content/weapon/weaponList";
 
 function IndexedDBService() {
     const dbPromise: Promise<IDBDatabase> = new Promise((resolve, reject) => {

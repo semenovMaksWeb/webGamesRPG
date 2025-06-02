@@ -1,17 +1,17 @@
 import { FellerСharacter } from "@src/content/character/fellerСharacter"
 import { LookNoviceWeapon } from "@src/content/weapon/look/lookNoviceWeapon";
-import { weaponList } from "../weapon/weaponList";
+import { weaponList } from "@src/content/weapon/weaponList";
 import { AccountConfiGain, AccountConfigCharacter, AccountConfigWeapon } from "./AccountConfig";
 import { LookPowerWeapon } from "@src/content/weapon/look/lookPowerWeapon";
 import { LookVampireWeapon } from "@src/content/weapon/look/lookVampireWeapon";
 import { NearAxWeapon } from "@src/content/weapon/near/nearAxWeapon";
 import { NearKnifeWeapon } from "@src/content/weapon/near/nearKnifeWeapon";
-import { GainExample } from "../example/gainExample";
-import { gainList } from "../gain/gainList";
+import { GainExample } from "@src/core/example/gainExample";
+import { gainList } from "@src/core/gain/gainList";
 import { ArmorGain } from "@src/content/gain/character/armorGain";
 import { DamageWeaponGain } from "@src/content/gain/weapon/damageWeaponGain";
 import { HealthGain } from "@src/content/gain/character/healthGain";
-import { characterList } from "../character/characterList";
+import { characterList } from "@src/core/character/characterList";
 
 export function accountFun() {
     function generatorCharacter(activeConfigCharacter: AccountConfigCharacter) {
