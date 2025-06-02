@@ -5,9 +5,11 @@ import { CharacterExample } from "@src/core/example/characterExample";
 import { Character } from "@src/core/character/character";
 import { WeaponExample } from "@src/core/example/weaponExample";
 import { Weapon } from "@src/core/weapon/weapon";
+import { ListExampleComponent } from "../component/listExampleComponent";
 
 export async function inventoryPage() {
     const main = document.querySelector(".main") as Element;
+    main.innerHTML = "";
     // Получить с бд инвентарь
     const weaponAccount = await indexedDBService.getWeapon() as AccountConfigWeapon[];
     const characterAccount = await indexedDBService.getСharacter() as AccountConfigCharacter[];
@@ -44,8 +46,9 @@ export async function inventoryPage() {
         );
         characterAccountExample.push(characterExample);
     }
-
+    const listExampleComponent = ListExampleComponent(weaponAccountExample, characterAccountExample);
     console.log(weaponAccountExample);
     console.log(characterAccountExample);
-    main.innerHTML = "";
+    console.log(listExampleComponent);
+    main.appendChild(listExampleComponent);
 }
