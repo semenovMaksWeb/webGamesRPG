@@ -1,7 +1,7 @@
 import { Coins } from "@src/core/coins/coins";
 import { coinsList } from "@src/core/coins/coinsList";
 import { Weapon } from "@src/core/weapon/weapon";
-import { WEAPON_LIST_TYPE } from "@src/core/weapon/weaponListType";
+import { WEAPON_LIST_TYPE } from "@src/content/weapon/weaponListType";
 
 export class NearKnifeWeapon extends Weapon {
     constructor() {
@@ -18,6 +18,8 @@ export class NearKnifeWeapon extends Weapon {
 
         super(
             "Нож",
+            "Описание Ножа",
+            "Изображение Ножа",
             configWeapon.coinsList,
             WEAPON_LIST_TYPE.NEAR,
             configWeapon.damage,

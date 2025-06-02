@@ -1,7 +1,7 @@
 import { Coins } from "@src/core/coins/coins";
 import { coinsList } from "@src/core/coins/coinsList";
 import { Weapon } from "@src/core/weapon/weapon";
-import { WEAPON_LIST_TYPE } from "@src/core/weapon/weaponListType";
+import { WEAPON_LIST_TYPE } from "@src/content/weapon/weaponListType";
 
 export class LookVampireWeapon extends Weapon {
     constructor() {
@@ -16,6 +16,8 @@ export class LookVampireWeapon extends Weapon {
 
         super(
             "Лук вампира",
+            "Описание Лука вампира",
+            "/content/weapon/look-vampire.png",
             configWeapon.coinsList,
             WEAPON_LIST_TYPE.LOOK,
             configWeapon.damage,
