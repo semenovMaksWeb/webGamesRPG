@@ -3,15 +3,15 @@ export class Attribute {
     private value: number = 0; // Значения атрибута числовое значение
     public readonly minValue: number | null; // Минимальное значение атрибута
     public readonly maxValue: number | null; // Максимально значение атрибута
-    public readonly image: string;
-    public readonly name: string;
+    public readonly image: string | null;
+    public readonly name: string | null;
     public readonly description: string;
 
     constructor(
         value: number,
         minValue: number | null,
         maxValue: number | null,
-        image: string,
+        image: string | null,
         name: string,
         description: string
     ) {
