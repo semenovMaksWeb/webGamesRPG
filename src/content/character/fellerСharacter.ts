@@ -22,11 +22,15 @@ export class FellerСharacter extends Character {
                 new Coins(coinsList.wooden, 40),
                 new Coins(coinsList.battle, 10),
             ],
-            attribute: configAtt
+            attribute: configAtt,
+            description: "Персонаж лесубор любит топоры и другие оружия ближнего боя",
+            image: null,
         }
 
         super(
             characterConfig.name,
+            characterConfig.description,
+            characterConfig.image,
             characterConfig.coinsList,
             generatorAttributeCharacter(characterConfig.attribute)
         );
