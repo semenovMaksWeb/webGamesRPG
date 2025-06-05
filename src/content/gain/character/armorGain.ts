@@ -15,7 +15,9 @@ export class ArmorGain extends Gain {
         super(
             "Повышения брони",
             bonus,
-            [typeListGain.character]
+            [typeListGain.character],
+            "Усиление брони на персонаже",
+            null
         );
     }
 }

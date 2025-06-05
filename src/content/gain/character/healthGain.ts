@@ -15,7 +15,9 @@ export class HealthGain extends Gain {
         super(
             "Повышения здоровья",
             bonus,
-            [typeListGain.character]
+            [typeListGain.character],
+            "Повышения здоровьяу персонажа",
+            null,
         );
     }
 }

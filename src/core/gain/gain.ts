@@ -7,14 +7,20 @@ export class Gain {
     public readonly name: string;
     public exampleBonusList: ExampleBonus[];
     public readonly typeList: typeListGain[];
+    public readonly description: string;
+    public readonly image: string | null;
 
     constructor(
         name: string,
         exampleBonusList: ExampleBonus[],
-        typeList: typeListGain[]
+        typeList: typeListGain[],
+        description: string,
+        image: string | null,
     ) {
         this.name = name;
         this.exampleBonusList = exampleBonusList;
         this.typeList = typeList;
+        this.description = description;
+        this.image = image;
     }
 }

@@ -13,9 +13,11 @@ export class DamageWeaponGain extends Gain {
             }
         ]
         super(
-            "Повышения базового урона",
+            "Повышения урона",
             bonus,
-            [typeListGain.weapon]
+            [typeListGain.weapon],
+            "Повышения базового урона у оружие",
+            null
         );
     }
 }
