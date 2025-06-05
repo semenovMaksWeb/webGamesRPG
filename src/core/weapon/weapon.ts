@@ -13,6 +13,7 @@ export class Weapon {
     description: string;
     image: string;
     coinsList: Coins[]
+
     damage: DamageAttribute;
     speed: SpeedDamageAttribute;
     critDamage: CritDamageAttribute;
@@ -37,6 +38,7 @@ export class Weapon {
         this.coinsList = coinsList;
         this.type = type;
         this.typeText = WEAPON_LIST_TYPE_TEXT[this.type];
+        
         this.damage = new DamageAttribute(damage);
         this.speed = new SpeedDamageAttribute(speed);
         this.chanceCritDamage = new CritDamageAttribute(chanceCritDamage);
