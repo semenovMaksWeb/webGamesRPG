@@ -1,3 +1,11 @@
+import { HealthAttribute } from "@src/core/attribute/defensive/healthAttribute";
+import { ArmorAttribute } from "@src/core/attribute/defensive/armorAttribute";
+import { BarrierAttribute } from "@src/core/attribute/defensive/barrierAttribute";
+import { DamageAttribute } from "@src/core/attribute/damage/damageAttribute";
+import { SpeedDamageAttribute } from "@src/core/attribute/damage/speedDamageAttribute";
+import { NearAddDamageAttribute } from "@src/core/attribute/damage/nearAddDamageAttribute";
+import { HemorrhageResistAttribute } from "@src/core/attribute/resist/hemorrhageResistAttribute";
+
 export enum ListAttribute {
     armor = "armor",
     health = "health",
@@ -6,7 +14,7 @@ export enum ListAttribute {
     damage = "damage",
     nearAddDamage = "nearAddDamage",
     hemorrhage = "hemorrhage",
-    hemorrhageResist= "hemorrhageResist"
+    hemorrhageResist = "hemorrhageResist"
 }
 
 
@@ -16,7 +24,8 @@ export enum ListAttributeCharacter {
     barrier = ListAttribute.barrier,
     speed = ListAttribute.speed,
     damage = ListAttribute.damage,
-    nearAddDamage = ListAttribute.nearAddDamage
+    nearAddDamage = ListAttribute.nearAddDamage,
+    hemorrhageResist = ListAttribute.hemorrhageResist,
 }
 
 export enum ListAttributeWeapon {
@@ -38,3 +47,15 @@ export enum ListAttributeDamage {
 export enum ListAttributeResistDamage {
     hemorrhageResist = ListAttribute.hemorrhageResist,
 }
+
+export interface AttributeCharacter {
+    health: HealthAttribute;
+    armor: ArmorAttribute;
+    barrier: BarrierAttribute;
+    damage: DamageAttribute;
+    speed: SpeedDamageAttribute;
+    nearAddDamage: NearAddDamageAttribute;
+    hemorrhageResistAttribute: HemorrhageResistAttribute;
+}
+
+export type AttributeCharacterObject = Record<keyof typeof ListAttributeCharacter, number>
