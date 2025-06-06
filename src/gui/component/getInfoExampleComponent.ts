@@ -19,11 +19,38 @@ export function getInfoExampleComponent(
     infoExampleDiv.classList.add("infoExample");
 
     if (image !== null) {
+
+        // экземпляр персонажа инфа и изображение
+        const exampleWrapper = document.createElement("div");
+        exampleWrapper.classList.add("exampleWrapper");
+
+        // экземпляр персонажа инфа
+        const exampleRowWrapper = document.createElement("div");
+        exampleRowWrapper.classList.add("exampleRowWrapper");
+
+        // div для уровня
+        const levelDiv = document.createElement("div");
+        levelDiv.innerHTML = `Уровень: ${level}`;
+
+        // div для опыта
+        const experienceDiv = document.createElement("div");
+        experienceDiv.innerHTML = `Опыт: ${experience} / ${EXPERIENCE_MIN}`;
+
+        // Заполнение персонажа инфа
+        exampleRowWrapper.appendChild(levelDiv);
+        exampleRowWrapper.appendChild(experienceDiv);
+
+        // создание блока изображение
         const imageExampleWrapper = document.createElement("div");
+        imageExampleWrapper.classList.add("imageExampleWrapper");
+        // создание изображения
         const imageExample = document.createElement("img");
         imageExample.setAttribute("src", image);
         imageExampleWrapper.appendChild(imageExample);
-        infoExampleDiv.appendChild(imageExampleWrapper);
+
+        exampleWrapper.appendChild(exampleRowWrapper)
+        exampleWrapper.appendChild(imageExampleWrapper)
+        infoExampleDiv.appendChild(exampleWrapper);
     }
 
     const attributeDiv = document.createElement("div");
@@ -42,14 +69,7 @@ export function getInfoExampleComponent(
         attributeDiv.appendChild(attributeItemDiv);
     }
 
-    const levelDiv = document.createElement("div");
-    levelDiv.innerHTML = `Уровень: ${level}`;
-
-    const experienceDiv = document.createElement("div");
-    experienceDiv.innerHTML = `Опыт: ${experience} / ${EXPERIENCE_MIN}`;
-
     infoExampleDiv.appendChild(attributeDiv);
-    infoExampleDiv.appendChild(levelDiv);
-    infoExampleDiv.appendChild(experienceDiv);
+
     return infoExampleDiv;
 }
