@@ -50,7 +50,7 @@ export function ListExampleComponent(
         const weaponItemDom = document.createElement("div");
         weaponItemDom.classList.add("item");
         weaponItemDom.classList.add("weaponItem");
-        weaponItemDom.innerHTML = `${name}-${typeText}-${level}ур.`;
+        weaponItemDom.innerHTML = `${name}-${typeText}`;
         weaponItemDom.addEventListener("click", (event) => clickItemExample(event, weaponItem));
         divWeapon.appendChild(weaponItemDom);
     }
@@ -67,7 +67,7 @@ export function ListExampleComponent(
         }
 
         characterItemDom.addEventListener("click", (event) => clickItemExample(event, characterItem));
-        characterItemDom.innerHTML = `${name}-${level}ур.`
+        characterItemDom.innerHTML = `${name}`
         divCharacter.appendChild(characterItemDom);
     }
 
