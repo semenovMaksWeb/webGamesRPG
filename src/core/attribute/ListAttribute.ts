@@ -41,6 +41,15 @@ export enum ListAttributeWeapon {
     critDamage = ListAttribute.critDamage,
     hemorrhage = ListAttribute.hemorrhage
 }
+export enum ListAttributeEnemy {
+    armor = ListAttribute.armor,
+    health = ListAttribute.health,
+    barrier = ListAttribute.barrier,
+    speed = ListAttribute.speed,
+    damage = ListAttribute.damage,
+    hemorrhage = ListAttribute.hemorrhage,
+    hemorrhageResist = ListAttribute.hemorrhageResist,
+}
 
 export enum ListAttributeGain {
     health = ListAttribute.health,
@@ -74,6 +83,16 @@ export interface AttributeCharacter {
     nearAddDamage: NearAddDamageAttribute;
     hemorrhageResistAttribute: HemorrhageResistAttribute;
 }
+export interface AttributeEnemy {
+    health: HealthAttribute;
+    armor: ArmorAttribute;
+    barrier: BarrierAttribute;
+    damage: DamageAttribute;
+    speed: SpeedDamageAttribute;
+    hemorrhage: HemorrhageAttribute;
+    hemorrhageResistAttribute: HemorrhageResistAttribute;
+}
 
 export type AttributeCharacterObject = Record<keyof typeof ListAttributeCharacter, number>
 export type AttributeWeaponObject = Record<keyof typeof ListAttributeWeapon, number>
+export type AttributeEnemyObject = Record<keyof typeof ListAttributeEnemy, number>
