@@ -24,7 +24,7 @@ export function ListExampleComponent(
 
         if (getExampleInType !== null) {
             const getInfoExampleDiv = getInfoExampleComponent(getExampleInType.image, getExampleInType.attribute);
-            infoExample.innerHTML = getInfoExampleDiv.outerHTML;
+            infoExample.innerHTML = getInfoExampleDiv.innerHTML;
         }
     }
 
