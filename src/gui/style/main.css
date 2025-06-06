@@ -11,6 +11,22 @@ body {
     font-size: var(--font-size);
 }
 
+html,
+body {
+    height: 100%;
+}
+
+#APP {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main {
+    margin: 0 10px;
+    flex: 1 1 auto;
+}
+
 .button {
     background-color: #008000;
     color: #fff;
@@ -61,8 +77,4 @@ body {
 .item.itemExampleActive {
     background-color: var(--color-active);
     color: #fff;
-}
-
-.main { 
-    margin: 0 10px;
 }
