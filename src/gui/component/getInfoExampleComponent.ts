@@ -24,12 +24,14 @@ export function getInfoExampleComponent(
 
     const attributeDiv = document.createElement("div");
     attributeDiv.classList.add('attributeList');
-    console.log(attribute);
+
     for (const attributeKey of LIST_ATTRIBUTE) {
         const attributeItem = attribute[attributeKey];
+
         if (!attributeItem) {
             continue;
         }
+
         const attributeItemDiv = document.createElement("div");
         attributeItemDiv.classList.add('attributeItem');
         attributeItemDiv.innerHTML = `${attributeItem.name}: ${attributeItem.getValue()}`;
