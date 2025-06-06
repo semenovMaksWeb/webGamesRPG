@@ -46,7 +46,6 @@ export function ListExampleComponent(
     for (const weaponItem of listWeaponExample) {
         const name = weaponItem.weapon.name;
         const typeText = weaponItem.weapon.typeText;
-        const level = weaponItem.experience.level;
         const weaponItemDom = document.createElement("div");
         weaponItemDom.classList.add("item");
         weaponItemDom.classList.add("weaponItem");
@@ -57,7 +56,6 @@ export function ListExampleComponent(
 
     for (const [characterIndex, characterItem] of listCharacterExample.entries()) {
         const name = characterItem.character.name;
-        const level = characterItem.experience.level;
         const characterItemDom = document.createElement("div");
         characterItemDom.classList.add("item");
         characterItemDom.classList.add("characterItem");
