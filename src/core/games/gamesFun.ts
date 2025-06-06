@@ -17,8 +17,8 @@ export function gamesPlayer(player1: Player, player2: Player) {
         }
 
         if (games.checkGamesEnd()) {
-            console.log("player1.characterPlayer.health.getValue", player1.characterPlayer.health.getValue());
-            console.log("player2.characterPlayer.health.getValue", player2.characterPlayer.health.getValue());
+            console.log("player1.characterPlayer.health.getValue", player1.characterPlayer.attribute.health.getValue());
+            console.log("player2.characterPlayer.health.getValue", player2.characterPlayer.attribute.health.getValue());
             break;
         }
 

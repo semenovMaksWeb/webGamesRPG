@@ -1,7 +1,7 @@
 import { ListAttributeCharacter, ListAttributeGain, ListAttributeWeapon } from "@src/core/attribute/ListAttribute";
 import { Character } from "@src/core/character/character";
-import { Weapon } from "../weapon/weapon";
-import { GainExample } from "../example/gainExample";
+import { Weapon } from "@src/core/weapon/weapon";
+import { GainExample } from "@src/core/example/gainExample";
 
 export interface ExampleBonus {
     name: string;
@@ -18,23 +18,23 @@ export function ExampleBonusCharacterCall(
     for (const bonusItem of bonusList) {
         switch (bonusItem.name) {
             case ListAttributeCharacter.armor:
-                character.armor.setValue(character.armor.getValue() + bonusItem.value);
+                character.attribute.armor.setValue(character.attribute.armor.getValue() + bonusItem.value);
                 break;
 
             case ListAttributeCharacter.barrier:
-                character.barrier.setValue(character.barrier.getValue() + bonusItem.value);
+                character.attribute.barrier.setValue(character.attribute.barrier.getValue() + bonusItem.value);
                 break;
 
             case ListAttributeCharacter.damage:
-                character.damage.setValue(character.damage.getValue() + bonusItem.value);
+                character.attribute.damage.setValue(character.attribute.damage.getValue() + bonusItem.value);
                 break;
 
             case ListAttributeCharacter.health:
-                character.health.setValue(character.health.getValue() + bonusItem.value);
+                character.attribute.health.setValue(character.attribute.health.getValue() + bonusItem.value);
                 break;
 
             case ListAttributeCharacter.speed:
-                character.speed.setValue(character.speed.getValue() + bonusItem.value);
+                character.attribute.speed.setValue(character.attribute.speed.getValue() + bonusItem.value);
                 break;
         }
     }
@@ -44,11 +44,11 @@ export function ExampleBonusCharacterCall(
         for (const gainBonusItem of gainItem.gain.exampleBonusList) {
             switch (gainBonusItem.name) {
                 case ListAttributeGain.armor:
-                    character.armor.setValue(character.armor.getValue() + gainBonusItem.value);
+                    character.attribute.armor.setValue(character.attribute.armor.getValue() + gainBonusItem.value);
                     break;
 
                 case ListAttributeGain.health:
-                    character.health.setValue(character.health.getValue() + gainBonusItem.value);
+                    character.attribute.health.setValue(character.attribute.health.getValue() + gainBonusItem.value);
                     break;
             }
         }
@@ -65,11 +65,11 @@ export function ExampleBonusWeaponCall(
     for (const bonusItem of bonusList) {
         switch (bonusItem.name) {
             case ListAttributeWeapon.damage:
-                weapon.damage.setValue(weapon.damage.getValue() + bonusItem.value);
+                weapon.attribute.damage.setValue(weapon.attribute.damage.getValue() + bonusItem.value);
                 break;
 
             case ListAttributeWeapon.speed:
-                weapon.damage.setValue(weapon.damage.getValue() + bonusItem.value);
+                weapon.attribute.damage.setValue(weapon.attribute.damage.getValue() + bonusItem.value);
                 break;
         }
     }
@@ -79,7 +79,7 @@ export function ExampleBonusWeaponCall(
         for (const gainBonusItem of gainItem.gain.exampleBonusList) {
             switch (gainBonusItem.name) {
                 case ListAttributeGain.damage:
-                    weapon.damage.setValue(weapon.damage.getValue() + gainBonusItem.value);
+                    weapon.attribute.damage.setValue(weapon.attribute.damage.getValue() + gainBonusItem.value);
                     break;
             }
         }

@@ -21,7 +21,7 @@ export class Games {
     checkGamesEnd() {
         return !!this.playerList.find((playerItem) => {
             const example = this.getExample(playerItem, "character") as Character;
-            return example.health.getValue() == 0
+            return example.attribute.health.getValue() == 0
         });
     }
 
@@ -39,7 +39,7 @@ export class Games {
 
     // базовый дамаг персонажа
     damageCharacterBase(character: Character) {
-        return character.damage.getValue() * character.speed.getValue();
+        return character.attribute.damage.getValue() * character.attribute.speed.getValue();
     }
 
     // базовый дамаг оружия
@@ -47,7 +47,7 @@ export class Games {
         if (weapon == null) {
             return 0;
         }
-        return weapon.damage.getValue() * weapon.speed.getValue();
+        return weapon.attribute.damage.getValue() * weapon.attribute.speed.getValue();
     }
     // Урон с учетом прокачки персонажа на тип оружия
     damageSkillWeapon(damageWeaponBase: number, coefficientSkillWeapon: number) {
@@ -59,8 +59,8 @@ export class Games {
             return 0;
         }
         const chanceCrit = getRandomInt(0, 95);
-        const isCrit = chanceCrit <= weapon.chanceCritDamage.getValue() ? 1 : 0;
-        return (damageWeaponBase * weapon.critDamage.getValue() / 100 * isCrit);
+        const isCrit = chanceCrit <= weapon.attribute.chanceCritDamage.getValue() ? 1 : 0;
+        return (damageWeaponBase * weapon.attribute.critDamage.getValue() / 100 * isCrit);
     }
 
     // урон от типа урона
@@ -73,14 +73,14 @@ export class Games {
 
     // уменьшить урон из за брони
     removeDamageArmor(damageAll: number, exampleDeff: Character | Enemy) {
-        return damageAll - (damageAll * exampleDeff.armor.getValue() / 100);
+        return damageAll - (damageAll * exampleDeff.attribute.armor.getValue() / 100);
     }
 
     // Уменьшить урон взависимотси от наличия резиста
     removeDamageRisist(damage: number, ExampleDeff: Character | Enemy, typeDamage: ListAttributeDamage) {
         switch (typeDamage) {
             case ListAttributeDamage.hemorrhage:
-                return damage - (damage * ExampleDeff.hemorrhageResistAttribute.getValue() / 100);
+                return damage - (damage * ExampleDeff.attribute.hemorrhageResistAttribute.getValue() / 100);
         }
         return damage;
     }
@@ -157,7 +157,7 @@ export class Games {
         this.addEffect(playerDeff, effectList.hemorrhage, countEffectHemorrhage);
         this.addHistory(playerDeff.name, ActionGamesList.effectHemorrhage, countEffectHemorrhage);
         // Проверка что есть барьер
-        if (example.barrier.getValue() !== 0) {
+        if (example.attribute.barrier.getValue() !== 0) {
             return (damageWeaponBase * typeDamage.value / 100) - (damageWeaponBase * remoreDamageBarrier / 100);
         }
 
@@ -170,9 +170,9 @@ export class Games {
         let hemorrhage = 0;
         const example: Weapon | Enemy = this.getExample(exampleAttk, "weapon") as Weapon | Enemy;
 
-        typeListDamage = [{ name: ListAttributeDamage.damage, value: example.damage.getValue() }];
+        typeListDamage = [{ name: ListAttributeDamage.damage, value: example.attribute.damage.getValue() }];
 
-        if (example.hemorrhageAttribute.getValue() !== 0) {
+        if (example.attribute.hemorrhage.getValue() !== 0) {
             typeListDamage.push({ name: ListAttributeDamage.hemorrhage, value: hemorrhage });
         }
 
@@ -196,7 +196,7 @@ export class Games {
 
         switch (player.weaponPlayer.type) {
             case WEAPON_LIST_TYPE.NEAR:
-                return player.character.nearAddDamage.getValue();
+                return player.character.attribute.nearAddDamage.getValue();
 
             case WEAPON_LIST_TYPE.LOOK:
                 return 0;
@@ -215,7 +215,7 @@ export class Games {
                 case effectList.hemorrhage:
                     // кровотечение наносит урон сразу по здоровью
                     this.addHistory(exampleAttk.name, ActionGamesList.getDamageXp, effectItem.getCount());
-                    example.health.setValue(example.health.getValue() - effectItem.getCount());
+                    example.attribute.health.setValue(example.attribute.health.getValue() - effectItem.getCount());
                     break;
             }
 
@@ -230,11 +230,11 @@ export class Games {
     damagePlayer(playerDeff: Player | Enemy, damage: number) {
         // пока есть барьер урон по здоровью не будет, весь сверхУрон полностью поглащается барьером.
         const example: Character = this.getExample(playerDeff, "character") as Character;
-        const barrier = example.barrier.getValue();
+        const barrier = example.attribute.barrier.getValue();
         if (barrier != 0) {
-            example.barrier.setValue(barrier - damage);
+            example.attribute.barrier.setValue(barrier - damage);
             return;
         }
-        example.health.setValue(example.health.getValue() - damage);
+        example.attribute.health.setValue(example.attribute.health.getValue() - damage);
     }
 }
