@@ -1,0 +1,13 @@
+.inventoryPage {
+    display: flex;
+}
+
+.listExample {
+    padding: 5px 10px;
+    border: 3px solid var(--color-border);
+    width: 30%;
+}
+
+.infoExample {
+    margin-left: 30px;
+}

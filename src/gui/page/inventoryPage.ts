@@ -5,7 +5,9 @@ import { CharacterExample } from "@src/core/example/characterExample";
 import { Character } from "@src/core/character/character";
 import { WeaponExample } from "@src/core/example/weaponExample";
 import { Weapon } from "@src/core/weapon/weapon";
-import { ListExampleComponent } from "../component/listExampleComponent";
+import { ListExampleComponent } from "@src/gui/component/listExampleComponent";
+import { getInfoExampleComponent } from "@src/gui/component/getInfoExampleComponent";
+import "@src/gui/style/inventoryPage.css"
 
 export async function inventoryPage() {
     const main = document.querySelector(".main") as Element;
@@ -46,9 +48,12 @@ export async function inventoryPage() {
         );
         characterAccountExample.push(characterExample);
     }
+
     const listExampleComponent = ListExampleComponent(weaponAccountExample, characterAccountExample);
-    console.log(weaponAccountExample);
-    console.log(characterAccountExample);
-    console.log(listExampleComponent);
-    main.appendChild(listExampleComponent);
+    const getInfoExampleDiv = getInfoExampleComponent(characterAccountExample[0].character.image, characterAccountExample[0].character.attribute);
+    const inventory = document.createElement("div");
+    inventory.classList.add("inventoryPage");
+    inventory.appendChild(listExampleComponent);
+    inventory.appendChild(getInfoExampleDiv);
+    main.appendChild(inventory);
 }

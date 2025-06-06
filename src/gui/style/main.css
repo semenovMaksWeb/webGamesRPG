@@ -50,3 +50,19 @@ body {
 .legend {
     padding: 0 5px;
 }
+
+.item {
+    cursor: pointer;
+    border: 1px solid var(--color-border);
+    padding: 4px 8px;
+}
+
+.item:hover,
+.item.itemExampleActive {
+    background-color: var(--color-active);
+    color: #fff;
+}
+
+.main { 
+    margin: 0 10px;
+}

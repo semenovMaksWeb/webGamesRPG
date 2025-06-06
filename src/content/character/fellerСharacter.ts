@@ -24,7 +24,7 @@ export class FellerСharacter extends Character {
             ],
             attribute: configAtt,
             description: "Персонаж лесубор любит топоры и другие оружия ближнего боя",
-            image: null,
+            image: "/content/character/feller.png",
         }
 
         super(
