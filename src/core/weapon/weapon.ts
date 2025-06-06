@@ -5,32 +5,24 @@ import { CritDamageAttribute } from "@src/core/attribute/damage/critDamageAttrib
 import { chanceCritDamageAttribute } from "@src/core/attribute/damage/chanceCritDamageAttribute";
 import { HemorrhageAttribute } from "@src/core/attribute/typeDamage/hemorrhageAttribute";
 import { Coins } from "@src/core/coins/coins";
+import { AttributeWeapon } from "@src/core/attribute/ListAttribute";
 
 export class Weapon {
     name: string;
     type: WEAPON_LIST_TYPE;
     typeText: string;
     description: string;
-    image: string;
-    coinsList: Coins[]
-
-    damage: DamageAttribute;
-    speed: SpeedDamageAttribute;
-    critDamage: CritDamageAttribute;
-    chanceCritDamage: chanceCritDamageAttribute;
-    hemorrhageAttribute: HemorrhageAttribute;
+    image: string | null;
+    coinsList: Coins[];
+    attribute: AttributeWeapon;
 
     constructor(
         name: string,
         description: string,
-        image: string,
+        image: string | null,
         coinsList: Coins[],
         type: WEAPON_LIST_TYPE,
-        damage: number,
-        speed: number,
-        critDamage: number = 0,
-        chanceCritDamage: number = 0,
-        hemorrhageAttribute = 0,
+        attribute: AttributeWeapon
     ) {
         this.name = name;
         this.description = description;
@@ -38,11 +30,6 @@ export class Weapon {
         this.coinsList = coinsList;
         this.type = type;
         this.typeText = WEAPON_LIST_TYPE_TEXT[this.type];
-        
-        this.damage = new DamageAttribute(damage);
-        this.speed = new SpeedDamageAttribute(speed);
-        this.chanceCritDamage = new CritDamageAttribute(chanceCritDamage);
-        this.critDamage = new CritDamageAttribute(critDamage);
-        this.hemorrhageAttribute = new HemorrhageAttribute(hemorrhageAttribute)
+        this.attribute = attribute;
     }
 }
