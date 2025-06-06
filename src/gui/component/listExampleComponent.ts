@@ -23,7 +23,12 @@ export function ListExampleComponent(
         event.target.classList.add("itemExampleActive");
 
         if (getExampleInType !== null) {
-            const getInfoExampleDiv = getInfoExampleComponent(getExampleInType.image, getExampleInType.attribute);
+            const getInfoExampleDiv = getInfoExampleComponent(
+                getExampleInType.image,
+                getExampleInType.attribute,
+                example.experience.level,
+                example.experience.experience
+            );
             infoExample.innerHTML = getInfoExampleDiv.innerHTML;
         }
     }

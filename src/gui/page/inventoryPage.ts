@@ -50,7 +50,13 @@ export async function inventoryPage() {
     }
 
     const listExampleComponent = ListExampleComponent(weaponAccountExample, characterAccountExample);
-    const getInfoExampleDiv = getInfoExampleComponent(characterAccountExample[0].character.image, characterAccountExample[0].character.attribute);
+    const acitveExample = characterAccountExample[0];
+    const getInfoExampleDiv = getInfoExampleComponent(
+        acitveExample.character.image,
+        acitveExample.character.attribute,
+        acitveExample.experience.level,
+        acitveExample.experience.experience,
+    );
     const inventory = document.createElement("div");
     inventory.classList.add("inventoryPage");
     inventory.appendChild(listExampleComponent);

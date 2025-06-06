@@ -1,6 +1,10 @@
+import { EXPERIENCE_MIN } from "@src/core/experience/experience";
+
 export function getInfoExampleComponent(
     image: string | null,
-    attribute: any
+    attribute: any,
+    level: number,
+    experience: number,
 ) {
     // Порядок атрибутов на персонажа
     const LIST_ATTRIBUTE = [
@@ -38,6 +42,14 @@ export function getInfoExampleComponent(
         attributeDiv.appendChild(attributeItemDiv);
     }
 
+    const levelDiv = document.createElement("div");
+    levelDiv.innerHTML = `Уровень: ${level}`;
+
+    const experienceDiv = document.createElement("div");
+    experienceDiv.innerHTML = `Опыт: ${experience} / ${EXPERIENCE_MIN}`;
+
     infoExampleDiv.appendChild(attributeDiv);
+    infoExampleDiv.appendChild(levelDiv);
+    infoExampleDiv.appendChild(experienceDiv);
     return infoExampleDiv;
 }
